@@ -35,12 +35,11 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-// X lib
-var _X = new Object();
-var _Param_Separate = String.fromCharCode(7);
+
+$.mobile.allowCrossDomainPages = true;
 
 $(function() {
-	//alert(device.uuid);
+	alert(device.uuid);
 	//$("#chk_phone_number").val(device.uuid);
 	if( $.cookie('uid') ) {
 		$.mobile.changePage("#page_index");
