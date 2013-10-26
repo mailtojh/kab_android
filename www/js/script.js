@@ -47,12 +47,12 @@ alert(102)
 
     // Wait for Cordova to load
     //
-    document.addEventListener("deviceready", onDeviceReady, false);
+    //document.addEventListener("deviceready", onDeviceReady, false);
 
     // Cordova is ready
     //
     function onDeviceReady() {
-        var element = document.getElementById('deviceProperties');
+        // var element = document.getElementById('deviceProperties');
 alert(104)
         tText = 'Device Name: '     + device.name     + '<br />' + 
                             'Device Cordova: '  + device.cordova + '<br />' + 
@@ -65,7 +65,7 @@ alert(104)
     }
 
 $(function() {
-
+	onDeviceReady();
 	alert(105)
   //alert(device.platform + device.uuid);
 	//$("#chk_phone_number").val(device.uuid);
