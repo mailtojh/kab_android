@@ -35,12 +35,27 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-$(function() {
-	
-	$.support.cors = true;
-  $.mobile.allowCrossDomainPages = true;
+    // Wait for Cordova to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
 
-  alert(device.platform + device.uuid);
+    // Cordova is ready
+    //
+    function onDeviceReady() {
+        var element = document.getElementById('deviceProperties');
+
+        tText = 'Device Name: '     + device.name     + '<br />' + 
+                            'Device Cordova: '  + device.cordova + '<br />' + 
+                            'Device Platform: ' + device.platform + '<br />' + 
+                            'Device UUID: '     + device.uuid     + '<br />' + 
+                            'Device Model: '    + device.model     + '<br />' + 
+                            'Device Version: '  + device.version  + '<br />';
+
+        alert(tText)
+    }
+
+$(function() {
+  //alert(device.platform + device.uuid);
 	//$("#chk_phone_number").val(device.uuid);
 	//if( $.cookie('uid') ) {
 	//	$.mobile.changePage("#page_index");
