@@ -42,7 +42,7 @@ $(document).bind("mobileinit", function() {
 
 $(function() {
 	alert(device.uuid);
-	
+
 	//$("#chk_phone_number").val(device.uuid);
 	//if( $.cookie('uid') ) {
 	//	$.mobile.changePage("#page_index");
@@ -55,13 +55,13 @@ $(function() {
 	db.transaction(populateDB, errorCB, successCB);
 
 	// 직원목록 넣기
-	uf_getEmpList();
+//	uf_getEmpList();
 	
 	// 부서목록 넣기
-	uf_getDeptList();
+//	uf_getDeptList();
 
 	// 직위목록 넣기
-	uf_getPositionList();
+//	uf_getPositionList();
 
 	/*
 
