@@ -1,0 +1,45 @@
+#page_index {background-image:url(../img/kab_home.png);background-size:cover;background-position:top center;}
+
+#page_emp .emp_posname {font-size:12px;color:#999;}
+#page_emp div.row_select {margin:0;padding:0;background-color:#000; padding-left:45px;}
+#page_emp .ui-li-thumb, .ui-listview .ui-li-icon, .ui-li-content {margin:5px 0 5px 40px;}
+#page_emp .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb { padding-left:120px; }
+
+#page_emp ul#emp_list {margin-top:-12px;}
+#page_emp ul#emp_list .ui-link-inherit { background:url(./images/icon_checkbox_off.png) no-repeat 10px; padding-left:40px; }
+#page_emp ul#emp_list .ui-link-inherit.bg_checkbox { background:url(./images/icon_checkbox_on.png) no-repeat 10px; }
+
+/* #page_emp h2.ui-li-heading {margin:0 0 7px 0;} */
+
+#page_emp_detail .emp_detail_photo {margin:0 auto;}
+#page_emp_detail .emp_detail_photo img {max-width:150px;}
+#page_emp_detail .emp_detail_info {padding-left:10px;padding-top:10px;font-weight:bold;} /* 사진 padding-left:120px; */
+#page_emp_detail ul.emp_detail_btn {list-style:none;margin:10px 0 0 0;padding:0;clear:both;}
+#page_emp_detail ul.emp_detail_btn li {font-size:16px;margin:10px 0 10px 0;}
+#page_emp_detail #emp_info_posname {font-size:14px;color:#666;}
+#page_emp_detail #emp_info_name {font-size:24px;margin:8px 0 15px 0;}
+#page_emp_detail .emp_detail_btn {clear:both;}
+#page_emp_detail .emp_detail_deptname {min-height:30px;}
+
+
+#div_emp_content {position:relative;}
+#div_emp_content .ui-input-search {margin-top:-7px;}
+#div_emp_content .search_left {padding-right:80px;height:60px;}
+#div_emp_content .search_right {position:absolute;top:-2px;right:10px;}
+
+
+
+#page_emp_part .emp_posname {font-size:12px;color:#999;}
+#page_emp_part div.row_select {margin:0;padding:0;background-color:#000; padding-left:45px;}
+#page_emp_part .ui-li-thumb, .ui-listview .ui-li-icon, .ui-li-content {margin:5px 0 5px 40px;}
+#page_emp_part .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb { padding-left:120px; }
+#page_emp_part ul#emp_list_part .ui-link-inherit { background:url(./images/icon_checkbox_off.png) no-repeat 10px; padding-left:40px; }
+#page_emp_part ul#emp_list_part .ui-link-inherit.bg_checkbox { background:url(./images/icon_checkbox_on.png) no-repeat 10px; }
+
+.login_form , .login_form_2 {margin-top:90px;}
+.login_form_2 {display:none;}
+
+#page_dept .ui-content, #page_dept .ui-collapsible-content { padding:0 15px; }
+#page_dept .ui-collapsible-content>.ui-listview { margin: 0 -15px; }
+
+

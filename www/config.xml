@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>HelloWorld</name>
+    <name>한국감정원 모바일주소록</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        한국감정원 모바일주소록
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="ideanamu@daum.net" href="http://x-web.co.kr">
+        x-internet
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="permissions" value="none" />
-    <preference name="orientation" value="default" />
+    <preference name="orientation" value="potrait" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
