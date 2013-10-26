@@ -35,15 +35,18 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-
-$.mobile.allowCrossDomainPages = true;
+$(document).bind("mobileinit", function() {
+    $.support.cors = true;
+    $.mobile.allowCrossDomainPages = true;
+});
 
 $(function() {
 	alert(device.uuid);
+	
 	//$("#chk_phone_number").val(device.uuid);
-	if( $.cookie('uid') ) {
-		$.mobile.changePage("#page_index");
-	}
+	//if( $.cookie('uid') ) {
+	//	$.mobile.changePage("#page_index");
+	//}
 	//alert( getCookie('uid') );
 
 	db = window.openDatabase("kab_member", "1.0", "KAB Member DB", 1000000);
