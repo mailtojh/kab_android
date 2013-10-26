@@ -35,17 +35,12 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-$(document).bind("mobileinit", function() {
-    alert(0)
-    alert(device.platform + device.uuid);
-
-    $.support.cors = true;
-    $.mobile.allowCrossDomainPages = true;
-});
-
 $(function() {
 	
-	alert(1)
+	$.support.cors = true;
+  $.mobile.allowCrossDomainPages = true;
+
+  alert(device.platform + device.uuid);
 	//$("#chk_phone_number").val(device.uuid);
 	//if( $.cookie('uid') ) {
 	//	$.mobile.changePage("#page_index");
@@ -56,7 +51,7 @@ $(function() {
 
 	// db 생성
 	db.transaction(populateDB, errorCB, successCB);
-alert(2)
+
 	// 직원목록 넣기
 //	uf_getEmpList();
 	
