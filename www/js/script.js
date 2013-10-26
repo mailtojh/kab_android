@@ -35,6 +35,16 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
+alert(101)
+
+    $(document).bind("mobileinit", function() {
+    	alert(103)
+        $.support.cors = true;
+        $.mobile.allowCrossDomainPages = true;
+    });
+
+alert(102)
+
     // Wait for Cordova to load
     //
     document.addEventListener("deviceready", onDeviceReady, false);
@@ -43,7 +53,7 @@ var tId;
     //
     function onDeviceReady() {
         var element = document.getElementById('deviceProperties');
-
+alert(104)
         tText = 'Device Name: '     + device.name     + '<br />' + 
                             'Device Cordova: '  + device.cordova + '<br />' + 
                             'Device Platform: ' + device.platform + '<br />' + 
@@ -55,6 +65,8 @@ var tId;
     }
 
 $(function() {
+
+	alert(105)
   //alert(device.platform + device.uuid);
 	//$("#chk_phone_number").val(device.uuid);
 	//if( $.cookie('uid') ) {
