@@ -37,7 +37,7 @@ var tId;
 
 alert(101)
 
-    $(document).bind("mobileinit", function() {
+    $(document).on("mobileinit", function() {
     	alert(103)
         $.support.cors = true;
         $.mobile.allowCrossDomainPages = true;
