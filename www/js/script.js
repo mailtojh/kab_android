@@ -36,13 +36,16 @@ var tTelcell;
 var tId;
 
 $(document).bind("mobileinit", function() {
+    alert(0)
+    alert(device.platform + device.uuid);
+
     $.support.cors = true;
     $.mobile.allowCrossDomainPages = true;
 });
 
 $(function() {
-	alert(device.uuid);
-
+	
+	alert(1)
 	//$("#chk_phone_number").val(device.uuid);
 	//if( $.cookie('uid') ) {
 	//	$.mobile.changePage("#page_index");
@@ -53,7 +56,7 @@ $(function() {
 
 	// db 생성
 	db.transaction(populateDB, errorCB, successCB);
-
+alert(2)
 	// 직원목록 넣기
 //	uf_getEmpList();
 	
@@ -78,12 +81,6 @@ $(function() {
 	});
 	*/
 
-	// 핸드폰번호입력 init
-	$( "#page_login" ).on( "pageinit", function(event){
-  	$("#btn_chk_phone").on("click", function() {
-  		alert(0);
-  	});
-	});
 
 	// 직원조회 페이지 init
 	$( "#page_emp" ).on( "pageinit", function(event){
