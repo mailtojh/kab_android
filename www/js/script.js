@@ -590,8 +590,11 @@ uf_chkregnumber = function() {
 						$.mobile.changePage("#page_index");
 					} else {
 						// 등록된 전화번호가 없습니다.
-						$("#popupDialogTel2 h3.ui-title").html("인증번호가 일치하지 않습니다.<br />이용하실 수 없습니다.");
-						$("#popupDialogTel2").popup("open");
+						$.mobile.changePage("#page_index");
+
+						// 임시로 인증 막아둠.
+						//$("#popupDialogTel2 h3.ui-title").html("인증번호가 일치하지 않습니다.<br />이용하실 수 없습니다.");
+						//$("#popupDialogTel2").popup("open");
 					}
 				}
 			});
