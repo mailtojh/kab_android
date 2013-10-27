@@ -1,3 +1,5 @@
+var uf_jq_initialize; // jqm initialize 함수
+
 var uf_regnumber;
 var uf_chkregnumber;
 var uf_listRefresh;
@@ -35,45 +37,15 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-alert(101)
+// jqm을 시작합니다. - phonegap load 후에 jqm 시작
+uf_jq_initialize = function() {
+	$(document).bind("mobileinit", function() {
+		alert(103)
+		$.support.cors = true;
+		$.mobile.allowCrossDomainPages = true;
+	});
 
-    $(document).on("mobileinit", function() {
-    	alert(103)
-        $.support.cors = true;
-        $.mobile.allowCrossDomainPages = true;
-    });
-
-alert(102)
-
-    // Wait for Cordova to load
-    //
-    //document.addEventListener("deviceready", onDeviceReady, false);
-
-    // Cordova is ready
-    //
-    function onDeviceReady() {
-        // var element = document.getElementById('deviceProperties');
-alert(104)
-        tText = 'Device Name: '     + device.name     + '<br />' + 
-                            'Device Cordova: '  + device.cordova + '<br />' + 
-                            'Device Platform: ' + device.platform + '<br />' + 
-                            'Device UUID: '     + device.uuid     + '<br />' + 
-                            'Device Model: '    + device.model     + '<br />' + 
-                            'Device Version: '  + device.version  + '<br />';
-
-        alert(tText)
-    }
-
-$(function() {
-	onDeviceReady();
-	alert(105)
-  //alert(device.platform + device.uuid);
-	//$("#chk_phone_number").val(device.uuid);
-	//if( $.cookie('uid') ) {
-	//	$.mobile.changePage("#page_index");
-	//}
-	//alert( getCookie('uid') );
-
+	alert('jq_start')
 	db = window.openDatabase("kab_member", "1.0", "KAB Member DB", 1000000);
 
 	// db 생성
@@ -87,22 +59,6 @@ $(function() {
 
 	// 직위목록 넣기
 //	uf_getPositionList();
-
-	/*
-
-	$("#btn_chk_phone2").click( function() { alert(0)
-		$.mobile.changePage( "#page_index" , { transition: "slideleft" });
-	});
-
-
-	$("#page_dept a,#page_position a").on("click", function(e) {
-		if($(this).attr("id")=="part_1"||$(this).attr("id")=="position_1") {
-			$.mobile.changePage("#page_emp_part", { transition: "slideleft" });
-			uf_setPartEmpList();
-		}
-	});
-	*/
-
 
 	// 직원조회 페이지 init
 	$( "#page_emp" ).on( "pageinit", function(event){
@@ -158,7 +114,37 @@ $(function() {
 		uf_setEmpInfo();
 	});
 
-});
+}
+
+
+//$(function() {
+  //alert(device.platform + device.uuid);
+	//$("#chk_phone_number").val(device.uuid);
+	//if( $.cookie('uid') ) {
+	//	$.mobile.changePage("#page_index");
+	//}
+	//alert( getCookie('uid') );
+
+
+
+	/*
+
+	$("#btn_chk_phone2").click( function() { alert(0)
+		$.mobile.changePage( "#page_index" , { transition: "slideleft" });
+	});
+
+
+	$("#page_dept a,#page_position a").on("click", function(e) {
+		if($(this).attr("id")=="part_1"||$(this).attr("id")=="position_1") {
+			$.mobile.changePage("#page_emp_part", { transition: "slideleft" });
+			uf_setPartEmpList();
+		}
+	});
+	*/
+
+//});
+
+
 
 // 직원목록 가져오기 - server
 uf_getEmpList = function() {
@@ -246,7 +232,6 @@ uf_searchEmp = function(aVal) {
 		gEmpCurPage = 0;
 	}, errorCB);
 }
-
 
 // 직원목록 표시
 uf_setSearchResult = function(tx, results) {
@@ -564,7 +549,7 @@ uf_chkregnumber = function() {
 					uf_showLoading("hide");
 
 					if(d.result=="ok") {
-						$.cookie('uid', gPhoneNum);
+						//$.cookie('uid', gPhoneNum);
 						$.mobile.changePage("#page_index");
 					} else {
 						// 등록된 전화번호가 없습니다.
@@ -581,35 +566,3 @@ uf_chkregnumber = function() {
 	}
 }
 
-/*
-function setCookie(c_name,value,exdays) {
-	var exdate=new Date();
-	exdate.setDate(exdate.getDate() + exdays);
-	var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-	document.cookie=c_name + "=" + c_value;
-}
-
-function getCookie(c_name) {
-	var c_value = document.cookie;
-	var c_start = c_value.indexOf(" " + c_name + "=");
-	if (c_start == -1)
-	  {
-	  c_start = c_value.indexOf(c_name + "=");
-	  }
-	if (c_start == -1)
-	  {
-	  c_value = null;
-	  }
-	else
-	  {
-	  c_start = c_value.indexOf("=", c_start) + 1;
-	  var c_end = c_value.indexOf(";", c_start);
-	  if (c_end == -1)
-	  {
-	c_end = c_value.length;
-	}
-	c_value = unescape(c_value.substring(c_start,c_end));
-	}
-	return c_value;
-}
-*/
