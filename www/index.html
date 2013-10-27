@@ -13,40 +13,22 @@
 	<link rel="stylesheet" href="css/style.css">
 
 	<script type="text/javascript">
-	//var deviceReadyDeferred = $.Deferred();
-	//var jqmReadyDeferred = $.Deferred();
+	var gvEnv = {
+		mac : "";
+	};
 
 	$(document).bind("mobileinit", function () {
 	  $.support.cors = true;
 		$.mobile.allowCrossDomainPages = true;
-
-		alert('jq_start');
-		//jqmReadyDeferred.resolve();
 	});
 
 	document.addEventListener("deviceready", deviceReady, false);
 
 	function deviceReady() {
-	  //deviceReadyDeferred.resolve();
-
-		// 성공
-		//alert('onDeviceReady')
-		tText = 'Device UUID: '     + device.uuid     ;
-			//'Device Name: '     + device.name     + '<br />' + 
-			//'Device Cordova: '  + device.cordova + '<br />' + 
-			//'Device Platform: ' + device.platform + '<br />' + 
-			//'Device UUID: '     + device.uuid     + '<br />' + 
-			//'Device Model: '    + device.model     + '<br />' + 
-			//'Device Version: '  + device.version  + '<br />';
-
-		// 성공
-		alert(tText);
+		gvEnv.mac = device.uuid;
 
 		uf_jq_initialize();
 	}
-
-	//$.when(deviceReadyDeferred, jqmReadyDeferred).then(uf_jq_initialize);
-
 	</script>
 
 	<script src="js/jquery.mobile-1.3.2.min.js"></script>	
