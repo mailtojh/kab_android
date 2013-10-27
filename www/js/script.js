@@ -489,6 +489,7 @@ uf_regnumber = function() {
 		} else {
 			uf_showLoading("show");
 			// 인증번호 입력 화면으로 이동
+			alert('ajax');
 			$.ajax({
 				type: "POST",
 				url : "http://kabmobile.mighty-x.com:8080/Mighty/mobile/ChkLogin.jsp",
@@ -496,6 +497,8 @@ uf_regnumber = function() {
 				dataType : "jsonp",
 				jsonp : "callback",
 				success : function(d){
+					alert(d);
+					
 					uf_showLoading("hide");
 
 					if(d.result=="OK") {
