@@ -37,14 +37,6 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-$(function() {
-	$(document).bind("mobileinit", function() {
-		$.support.cors = true;
-		$.mobile.allowCrossDomainPages = true;
-
-		alert('jq_start')
-	});
-});
 
 // jqm을 시작합니다. - phonegap load 후에 jqm 시작
 uf_jq_initialize = function() {
