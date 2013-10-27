@@ -37,20 +37,20 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-$(document).bind("mobileinit", function() {
-	$.support.cors = true;
-	$.mobile.allowCrossDomainPages = true;
-
-	alert('jq_start')
-});
-
 // jqm을 시작합니다. - phonegap load 후에 jqm 시작
 uf_jq_initialize = function() {
 
-	db = window.openDatabase("kab_member", "1.0", "KAB Member DB", 1000000);
+	$(document).bind("mobileinit", function() {
+		$.support.cors = true;
+		$.mobile.allowCrossDomainPages = true;
 
-	// db 생성
+		alert('jq_start')
+	});
+
+	// DB 생성
+	db = window.openDatabase("kab_member", "1.0", "KAB Member DB", 1000000);
 	db.transaction(populateDB, errorCB, successCB);
+
 
 	// 직원목록 넣기
 //	uf_getEmpList();
