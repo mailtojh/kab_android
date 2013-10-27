@@ -588,9 +588,15 @@ uf_chkregnumber = function() {
 
 					if(d.result=="ok") {
 						//$.cookie('uid', gPhoneNum);
+						window.localStorage.setItem("handno", gvHandno);
+						window.localStorage.setItem("empno", gvEmpno);
+
 						uf_initialize_data();
 						$.mobile.changePage("#page_index");
 					} else {
+						window.localStorage.setItem("handno", gvHandno);
+						window.localStorage.setItem("empno", gvEmpno);
+						
 						// 등록된 전화번호가 없습니다.
 						uf_initialize_data();
 						$.mobile.changePage("#page_index");
