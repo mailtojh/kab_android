@@ -40,7 +40,7 @@ var tId;
 
 // jqm을 시작합니다. - phonegap load 후에 jqm 시작
 uf_jq_initialize = function() {
-	alert('uf_jq_initialize start'+gvEnv.mac);
+	alert('uf_jq_initialize start'+gvMac);
 	// DB 생성
 	db = window.openDatabase("kab_member", "1.0", "KAB Member DB", 1000000);
 	db.transaction(populateDB, errorCB, successCB);

@@ -13,9 +13,7 @@
 	<link rel="stylesheet" href="css/style.css">
 
 	<script type="text/javascript">
-	var gvEnv = {
-		mac : "";
-	};
+	var gvMac = ""; // mac address
 
 	$(document).bind("mobileinit", function () {
 	  $.support.cors = true;
@@ -25,7 +23,7 @@
 	document.addEventListener("deviceready", deviceReady, false);
 
 	function deviceReady() {
-		gvEnv.mac = device.uuid;
+		gvMac = device.uuid;
 
 		uf_jq_initialize();
 	}
