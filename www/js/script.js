@@ -59,6 +59,7 @@ uf_jq_initialize = function() {
 					uf_showLoading("hide");
 
 					if(d.result=="ok") {
+						uf_initialize_data();
 						$.mobile.changePage("#page_index");
 					} else {
 						// 등록된 전화번호가 없습니다.
@@ -587,9 +588,11 @@ uf_chkregnumber = function() {
 
 					if(d.result=="ok") {
 						//$.cookie('uid', gPhoneNum);
+						uf_initialize_data();
 						$.mobile.changePage("#page_index");
 					} else {
 						// 등록된 전화번호가 없습니다.
+						uf_initialize_data();
 						$.mobile.changePage("#page_index");
 
 						// 임시로 인증 막아둠.
