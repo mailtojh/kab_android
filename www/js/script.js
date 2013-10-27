@@ -46,7 +46,7 @@ var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
 uf_jq_initialize = function() {
 	gvHandno = window.localStorage.getItem("handno");
 	gvEmpno =  window.localStorage.getItem("empno");
-
+alert(gvHandno + "/" + gvEmpno);
 	if(gvHandno&&gvEmpno&&gvMac) {
 		uf_showLoading("show");
 		// 인증여부 체크
