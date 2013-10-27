@@ -13,21 +13,21 @@
 	<link rel="stylesheet" href="css/style.css">
 
 	<script type="text/javascript">
-	var deviceReadyDeferred = $.Deferred();
-	var jqmReadyDeferred = $.Deferred();
+	//var deviceReadyDeferred = $.Deferred();
+	//var jqmReadyDeferred = $.Deferred();
 
 	$(document).bind("mobileinit", function () {
 	  $.support.cors = true;
 		$.mobile.allowCrossDomainPages = true;
 
 		alert('jq_start');
-		jqmReadyDeferred.resolve();
+		//jqmReadyDeferred.resolve();
 	});
 
 	document.addEventListener("deviceready", deviceReady, false);
 
 	function deviceReady() {
-	  deviceReadyDeferred.resolve();
+	  //deviceReadyDeferred.resolve();
 
 		// 성공
 		//alert('onDeviceReady')
