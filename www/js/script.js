@@ -51,7 +51,7 @@ uf_jq_initialize = function() {
 		// 인증여부 체크
 			$.ajax({
 				type: "POST",
-				url : gvUrl+"ChkEmpExist.jsp",
+				url : gvUrl+"ChkLogin.jsp",
 				data: { handno : gvHandno, empno : gvHandno, uid : gvMac },
 				dataType : "jsonp",
 				jsonp : "callback",
@@ -93,7 +93,7 @@ uf_initialize_data = function () {
 
 	uf_showLoading("hide");
 
-	
+
 	// 직원조회 페이지 init
 	$( "#page_emp" ).on( "pageinit", function(event){
   	//alert( 'This page was just enhanced by jQuery Mobile!' );
@@ -535,7 +535,7 @@ uf_regnumber = function() {
 			// 인증번호 입력 화면으로 이동
 			$.ajax({
 				type: "POST",
-				url : gvUrl + "ChkLogin.jsp",
+				url : gvUrl + "ChkEmpExist.jsp",
 				data: { handno : gvHandno, empno : gvEmpno, mac : gvMac },
 				dataType : "jsonp",
 				jsonp : "callback",
