@@ -16,21 +16,23 @@
 	<script src="./js/script.js"></script>
 
 	<script type="text/javascript">
+	alert(0)
 	app.initialize();
-
+alert(1)
 	// Wait for PhoneGap to load
 	document.addEventListener("deviceready", onDeviceReady, false);
-
+alert(2)
 
 	function onDeviceReady() {
   	// var element = document.getElementById('deviceProperties');
 		alert('onDeviceReady')
-		tText = 'Device Name: '     + device.name     + '<br />' + 
-			'Device Cordova: '  + device.cordova + '<br />' + 
-			'Device Platform: ' + device.platform + '<br />' + 
-			'Device UUID: '     + device.uuid     + '<br />' + 
-			'Device Model: '    + device.model     + '<br />' + 
-			'Device Version: '  + device.version  + '<br />';
+		tText = 'Device UUID: '     + device.uuid     ;
+			//'Device Name: '     + device.name     + '<br />' + 
+			//'Device Cordova: '  + device.cordova + '<br />' + 
+			//'Device Platform: ' + device.platform + '<br />' + 
+			//'Device UUID: '     + device.uuid     + '<br />' + 
+			//'Device Model: '    + device.model     + '<br />' + 
+			//'Device Version: '  + device.version  + '<br />';
 
 		alert(tText);
 		uf_jq_initialize();
