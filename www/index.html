@@ -12,10 +12,6 @@
 
 	<link rel="stylesheet" href="css/style.css">
 
-	<script src="js/jquery.mobile-1.3.2.min.js"></script>	
-	<script src="js/script.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-
 	<script type="text/javascript">
 	var deviceReadyDeferred = $.Deferred();
 	var jqmReadyDeferred = $.Deferred();
@@ -52,6 +48,10 @@
 	$.when(deviceReadyDeferred, jqmReadyDeferred).then(uf_jq_initialize);
 
 	</script>
+
+	<script src="js/jquery.mobile-1.3.2.min.js"></script>	
+	<script src="js/script.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
 
 </head>
 <body>
