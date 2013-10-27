@@ -1,4 +1,5 @@
 var uf_jq_initialize; // jqm initialize 함수
+var uf_initialize_data; // data initialize 함수
 
 var uf_regnumber;
 var uf_chkregnumber;
@@ -37,24 +38,62 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
+var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
+
 
 // jqm을 시작합니다. - phonegap load 후에 jqm 시작
 uf_jq_initialize = function() {
-	alert('uf_jq_initialize start'+gvMac);
+	gvHandno = window.localStorage.getItem("handno");
+	gvEmpno =  window.localStorage.getItem("empno");
+
+	if(gvHandno&&gvEmpno&&gvMac) {
+		uf_showLoading("show");
+		// 인증여부 체크
+			$.ajax({
+				type: "POST",
+				url : gvUrl+"ChkEmpExist.jsp",
+				data: { handno : gvHandno, empno : gvHandno, uid : gvMac },
+				dataType : "jsonp",
+				jsonp : "callback",
+				success : function(d){ 
+					uf_showLoading("hide");
+
+					if(d.result=="ok") {
+						$.mobile.changePage("#page_index");
+					} else {
+						// 등록된 전화번호가 없습니다.
+						$.mobile.changePage("#page_login");
+					}
+				}
+			});
+	} else {
+		$.mobile.changePage("#page_login");
+	}
+}
+
+// 인증 후, 데이터 초기화
+uf_initialize_data = function () {
+	uf_showLoading("show");
+
+	// alert('uf_jq_initialize start'+gvMac);
 	// DB 생성
 	db = window.openDatabase("kab_member", "1.0", "KAB Member DB", 1000000);
 	db.transaction(populateDB, errorCB, successCB);
 
 
 	// 직원목록 넣기
-//	uf_getEmpList();
+	uf_getEmpList();
 	
 	// 부서목록 넣기
-//	uf_getDeptList();
+	uf_getDeptList();
 
 	// 직위목록 넣기
-//	uf_getPositionList();
+	uf_getPositionList();
 
+
+	uf_showLoading("hide");
+
+	
 	// 직원조회 페이지 init
 	$( "#page_emp" ).on( "pageinit", function(event){
   	//alert( 'This page was just enhanced by jQuery Mobile!' );
@@ -108,6 +147,12 @@ uf_jq_initialize = function() {
 
 		uf_setEmpInfo();
 	});
+
+	// 어플 home
+	$( "#page_index" ).on( "pageinit", function(event) {
+		uf_initialize_data();
+	});
+	
 
 }
 
@@ -469,20 +514,19 @@ uf_showLoading = function(aTag) {
 	$.mobile.loading( aTag=="show"?"show":"hide" );
 }
 
-
 // 인증
 uf_regnumber = function() {
-	var tPhone = $("#chk_phone_number").val();
-	var tEmpno = $("#chk_empno").val();
-	tPhone = tPhone.replace("-", "");
-	gPhoneNum = tPhone;
+	gvHandno = $("#chk_phone_number").val();
+	gvEmpno = $("#chk_empno").val();
+	//tPhone = tPhone.replace("-", "");
+	//gPhoneNum = tPhone;
 
-	if(tPhone&&tEmpno) {
+	if(gvHandno&&gvEmpno) {
 		// 전화번호 유효성 체크
 		//var rgEx = /^01[016789]-\d{3,4}-\d{4}$/g;
 		//var telOk = rgEx.test(tPhone);
 
-		if(tPhone.length<10) { 
+		if(gvHandno.length<10) { 
 			// 전화번호 형식이 잘못됐습니다.
 			$("#popupDialogTel h3.ui-title").html("전화번호 형식이 맞지 않습니다.");
 			$("#popupDialogTel").popup("open");
@@ -490,14 +534,13 @@ uf_regnumber = function() {
 			uf_showLoading("show");
 			// 인증번호 입력 화면으로 이동
 			$.ajax({
-				type: "GET",
-				url : "http://kabmobile.mighty-x.com:8080/Mighty/mobile/ChkLogin.jsp",
-				data: { handno : $("#chk_phone_number").val(), empno : tEmpno, mac : "AB.CD.EF.GH" },
+				type: "POST",
+				url : gvUrl + "ChkLogin.jsp",
+				data: { handno : gvHandno, empno : gvEmpno, mac : gvMac },
 				dataType : "jsonp",
 				jsonp : "callback",
 				success : function(d){
-					alert(d);
-
+					//alert(d);
 					uf_showLoading("hide");
 
 					if(d.result=="OK") {
@@ -525,9 +568,6 @@ uf_chkregnumber = function() {
 	var tRegNo = $("#chk_phone_number2").val();
 
 	if(tRegNo) {
-		// 전화번호 유효성 체크
-		//var rgEx = /^01[016789]-\d{3,4}-\d{4}$/g;
-		//var telOk = rgEx.test(tPhone);
 
 		if(tRegNo.length<6) { 
 			// 전화번호 형식이 잘못됐습니다.
@@ -538,8 +578,8 @@ uf_chkregnumber = function() {
 			// 인증번호 입력 화면으로 이동
 			$.ajax({
 				type: "POST",
-				url : "http://kabmobile.mighty-x.com:8080/Mighty/mobile/chk_login2.jsp",
-				data: { telno : gPhoneNum, regno : tRegNo, uid : gPhoneNum },
+				url : gvUrl + "SetLoginInfo.jsp",
+				data: { handno : gvHandno, empno : gvEmpno, mac : gvMac, regno : tRegNo },
 				dataType : "jsonp",
 				jsonp : "callback",
 				success : function(d){ 
