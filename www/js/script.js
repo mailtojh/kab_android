@@ -18,6 +18,7 @@ var uf_setEmpPage;
 var uf_showLoading;
 var uf_setDeptList;
 var uf_setJikwiList;
+var uf_openapp;
 
 var gPhoneNum;
 var gEmpLists; // 직원 목록
@@ -627,4 +628,12 @@ uf_chkregnumber = function() {
 		$("#popupDialogTel2").popup("open");
 	}
 }
+
+uf_openapp = function() {
+	//단말 로컬에 있는 어플리케이션 실행
+  document.checkframe.location = "com.ezwel.ezmobile"; //("스키마://호스트" 양식임)
+  //1초 후에 다음 펑션을 수행
+	setTimeout("checkApplicationInstall_callback()", 1000);
+}
+
 
