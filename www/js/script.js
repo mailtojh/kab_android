@@ -38,8 +38,8 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-//var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
-var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
+var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
+//var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
 
 // jqm을 시작합니다. - phonegap load 후에 jqm 시작
 uf_jq_initialize = function() {
@@ -575,42 +575,49 @@ uf_chkregnumber = function() {
 	if(tRegNo) {
 
 		if(tRegNo.length<6) { 
-			// 전화번호 형식이 잘못됐습니다.
+			// 인증번호 형식이 잘못됐습니다.
 			$("#popupDialogTel2 h3.ui-title").html("인증번호 6자리를 입력하세요.");
 			$("#popupDialogTel2").popup("open");
 		} else {
 			uf_showLoading("show");
 			// 인증번호 입력 화면으로 이동
-			$.ajax({
-				type: "POST",
-				url : gvUrl + "SetLoginInfo.jsp",
-				data: { handno : gvHandno, empno : gvEmpno, mac : gvMac, certno : tRegNo },
-				dataType : "jsonp",
-				jsonp : "callback",
-				success : function(d){ 
-					uf_showLoading("hide");
 
-					if(d.result=="OK") {
-						//$.cookie('uid', gPhoneNum);
-						window.localStorage.setItem("handno", gvHandno);
-						window.localStorage.setItem("empno", gvEmpno);
+			if(gvCertno==tRegNo) {
+				$.ajax({
+					type: "POST",
+					url : gvUrl + "SetLoginInfo.jsp",
+					data: { handno : gvHandno, empno : gvEmpno, mac : gvMac, certno : tRegNo },
+					dataType : "jsonp",
+					jsonp : "callback",
+					success : function(d){ 
+						uf_showLoading("hide");
 
-						uf_initialize_data();
-						$.mobile.changePage("#page_index");
-					} else {
-						window.localStorage.setItem("handno", gvHandno);
-						window.localStorage.setItem("empno", gvEmpno);
+						if(d.result=="OK") {
+							//$.cookie('uid', gPhoneNum);
+							window.localStorage.setItem("handno", gvHandno);
+							window.localStorage.setItem("empno", gvEmpno);
 
-						// 등록된 전화번호가 없습니다.
-						uf_initialize_data();
-						$.mobile.changePage("#page_index");
+							uf_initialize_data();
+							$.mobile.changePage("#page_index");
+						} else {
+							window.localStorage.setItem("handno", gvHandno);
+							window.localStorage.setItem("empno", gvEmpno);
 
-						// 임시로 인증 막아둠.
-						//$("#popupDialogTel2 h3.ui-title").html("인증번호가 일치하지 않습니다.<br />이용하실 수 없습니다.");
-						//$("#popupDialogTel2").popup("open");
+							// 등록된 전화번호가 없습니다.
+							uf_initialize_data();
+							$.mobile.changePage("#page_index");
+
+							// 임시로 인증 막아둠.
+							//$("#popupDialogTel2 h3.ui-title").html("인증번호가 일치하지 않습니다.<br />이용하실 수 없습니다.");
+							//$("#popupDialogTel2").popup("open");
+						}
 					}
-				}
-			});
+				});
+			} else {
+				// 인증번호가 일치하지 않습니다.
+				$("#popupDialogTel2 h3.ui-title").html("인증번호가 일치하지 않습니다.");
+				$("#popupDialogTel2").popup("open");
+			}
 		}
 	} else {
 		// 인증번호 입력하셔야 합니다. return
