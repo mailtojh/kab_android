@@ -55,7 +55,7 @@ alert(gvHandno + "/"+ gvEmpno + "/" + gvMac)
 			$.ajax({
 				type: "POST",
 				url : gvUrl+"ChkLogin.jsp",
-				data: { handno : gvHandno, empno : gvHandno, mac : gvMac },
+				data: { handno : gvHandno, empno : gvEmpno, mac : gvMac },
 				dataType : "jsonp",
 				jsonp : "callback",
 				success : function(d){ 
