@@ -614,6 +614,8 @@ uf_chkregnumber = function() {
 					}
 				});
 			} else {
+				uf_showLoading("hide");
+				
 				// 인증번호가 일치하지 않습니다.
 				$("#popupDialogTel2 h3.ui-title").html("인증번호가 일치하지 않습니다.");
 				$("#popupDialogTel2").popup("open");
