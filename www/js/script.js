@@ -61,7 +61,7 @@ alert(gvHandno + "/"+ gvEmpno + "/" + gvMac)
 				success : function(d){ 
 					uf_showLoading("hide");
 
-					if(d.result=="ok") {
+					if(d.result=="OK") {
 						uf_initialize_data();
 						$.mobile.changePage("#page_index");
 					} else {
@@ -589,7 +589,7 @@ uf_chkregnumber = function() {
 				success : function(d){ 
 					uf_showLoading("hide");
 
-					if(d.result=="ok") {
+					if(d.result=="OK") {
 						//$.cookie('uid', gPhoneNum);
 						window.localStorage.setItem("handno", gvHandno);
 						window.localStorage.setItem("empno", gvEmpno);
