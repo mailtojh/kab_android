@@ -522,8 +522,8 @@ uf_regnumber = function() {
 	//tPhone = tPhone.replace("-", "");
 	//gPhoneNum = tPhone;
 	gvCertno = Math.floor(Math.random() * 1000000)+100000;
-	if(tCertno>1000000) {
-		tCertno = tCertno - 100000;
+	if(gvCertno>1000000) {
+		gvCertno = gvCertno - 100000;
 	}
 
 	if(gvHandno&&gvEmpno) {
@@ -541,7 +541,7 @@ uf_regnumber = function() {
 			$.ajax({
 				type: "POST",
 				url : gvUrl + "ChkEmpExist.jsp",
-				data: { handno : gvHandno, empno : gvEmpno, mac : gvMac, certno : tCertno },
+				data: { handno : gvHandno, empno : gvEmpno, mac : gvMac, certno : gvCertno },
 				dataType : "jsonp",
 				jsonp : "callback",
 				success : function(d){
