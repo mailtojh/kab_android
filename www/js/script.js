@@ -38,8 +38,8 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-//var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
-var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
+var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
+//var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
 
 // jqm을 시작합니다. - phonegap load 후에 jqm 시작
 uf_jq_initialize = function() {
@@ -521,6 +521,10 @@ uf_regnumber = function() {
 	gvEmpno = $("#chk_empno").val();
 	//tPhone = tPhone.replace("-", "");
 	//gPhoneNum = tPhone;
+	gvCertno = Math.floor(Math.random() * 1000000)+100000;
+	if(tCertno>1000000) {
+		tCertno = tCertno - 100000;
+	}
 
 	if(gvHandno&&gvEmpno) {
 		// 전화번호 유효성 체크
@@ -537,7 +541,7 @@ uf_regnumber = function() {
 			$.ajax({
 				type: "POST",
 				url : gvUrl + "ChkEmpExist.jsp",
-				data: { handno : gvHandno, empno : gvEmpno, mac : gvMac },
+				data: { handno : gvHandno, empno : gvEmpno, mac : gvMac, certno : tCertno },
 				dataType : "jsonp",
 				jsonp : "callback",
 				success : function(d){
@@ -580,7 +584,7 @@ uf_chkregnumber = function() {
 			$.ajax({
 				type: "POST",
 				url : gvUrl + "SetLoginInfo.jsp",
-				data: { handno : gvHandno, empno : gvEmpno, mac : gvMac, regno : tRegNo },
+				data: { handno : gvHandno, empno : gvEmpno, mac : gvMac, certno : tRegNo },
 				dataType : "jsonp",
 				jsonp : "callback",
 				success : function(d){ 
