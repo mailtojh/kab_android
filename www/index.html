@@ -43,6 +43,42 @@
 </head>
 <body>
 
+
+
+
+<!-- page: #page_index -->
+<div data-role="page" id="page_index">
+	<div data-role="content" >
+		<div class="main_img"></div>
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar" data-iconpos="top" data-theme="b">
+			<ul>
+		    <li><a href="#page_emp" data-icon="search" data-transition="slide" data-theme="a">직원조회</a></li>
+		    <li><a href="#page_dept" data-icon="bars" data-transition="slide" data-theme="a">부서별</a></li>
+		    <li><a href="#page_position" data-icon="star" data-transition="slide" data-theme="a">직위별</a></li>
+		    <li><a href="#popupDialog" data-icon="info" data-position-to="window" data-transition="pop" data-rel="popup" data-theme="a" data-position-to="window" >모바일복지관</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width:400px;" class="ui-corner-all">
+		<div data-role="header" data-theme="a" class="ui-corner-top">
+			<h1>실행</h1>
+		</div>
+		<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+			<h3 class="ui-title">온라인 모바일 복지관을 실행하시겠습니까?</h3>
+			<a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">취소</a>
+			<a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">실행</a>
+		</div>
+	</div>
+</div>
+
+
+
+
+
 <!-- page: #page_login -->
 <div data-role="page" id="page_login" data-theme="a">
 	<div data-role="content" >
@@ -92,36 +128,6 @@
 	    </div>
 	</div>
 </div>
-
-<!-- page: #page_index -->
-<div data-role="page" id="page_index">
-	<div data-role="content" >
-		<div class="main_img"></div>
-	</div><!-- /content -->
-	
-	<div data-role="footer" data-position="fixed">
-		<div data-role="navbar" data-iconpos="top" data-theme="b">
-			<ul>
-		    <li><a href="#page_emp" data-icon="search" data-transition="slide" data-theme="a">직원조회</a></li>
-		    <li><a href="#page_dept" data-icon="bars" data-transition="slide" data-theme="a">부서별</a></li>
-		    <li><a href="#page_position" data-icon="star" data-transition="slide" data-theme="a">직위별</a></li>
-		    <li><a href="#popupDialog" data-icon="info" data-position-to="window" data-transition="pop" data-rel="popup" data-theme="a" data-position-to="window" >모바일복지관</a></li>
-			</ul>
-		</div>
-	</div>
-	
-	<div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width:400px;" class="ui-corner-all">
-		<div data-role="header" data-theme="a" class="ui-corner-top">
-			<h1>실행</h1>
-		</div>
-		<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
-			<h3 class="ui-title">온라인 모바일 복지관을 실행하시겠습니까?</h3>
-			<a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">취소</a>
-			<a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">실행</a>
-		</div>
-	</div>
-</div>
-
 
 
 
