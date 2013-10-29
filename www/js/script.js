@@ -39,8 +39,8 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-//var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
-var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
+var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
+//var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
 
 // jqm을 시작합니다. - phonegap load 후에 jqm 시작
 uf_jq_initialize = function() {
@@ -75,6 +75,13 @@ uf_jq_initialize = function() {
 
 // 인증 후, 데이터 초기화
 uf_initialize_data = function () {
+	// 테스트 데이터 세팅
+	alert('get data')
+	gvEmpno = "90001";
+	gvMac = "d5aa0e0b9287122c";
+	gvHandno = "01037062216";
+
+
 	uf_showLoading("show");
 
 	// alert('uf_jq_initialize start'+gvMac);
@@ -126,6 +133,9 @@ uf_initialize_data = function () {
 
 	// 부서별 페이지 init
 	$( "#page_dept" ).on( "pageinit", function(event){
+// 인증없이 데이터 가져오기
+// uf_initialize_data(); 
+
   	$("#page_dept ul li a").on("click", function() {
   		var tId = $(this).attr("id");
  
@@ -440,6 +450,7 @@ uf_setDeptList = function(aDepts) {
 	
 	for(var i in aDepts) {
 		if(tPreLevel=="3"&&aDepts[i].DATA_LVL!=tPreLevel) arrHtml[j++] = '</ul>';
+		if(tPreLevel=="2"&&aDepts[i].DATA_LVL==tPreLevel) arrHtml[j++] = '</div>';
 		if(aDepts[i].DATA_LVL<tPreLevel&&tPreLevel!="") {
 			//arrHtml[j++] = "</div>";
 			if(tPreLevel=="3"&&aDepts[i].DATA_LVL=="1") arrHtml[j++] = "</div></div>";
@@ -467,7 +478,7 @@ uf_setDeptList = function(aDepts) {
 	if(tPreLevel!="1") arrHtml[j++] = "</div>";
 	tListview.html( arrHtml.join('') );
 
-	tListview.trigger('create')
+	tListview.trigger('create');
 }
 
 // 직위 listview 생성
