@@ -477,9 +477,9 @@ uf_setDeptList = function(aDepts) {
 	arrHtml[j++] = "</div>";
 	if(tPreLevel!="1") arrHtml[j++] = "</div>";
 	tListview.html( arrHtml.join('') );
-alert(arrHtml.join(''))
+//alert(arrHtml.join(''))
+	$("#lv_dept_10100 ul").listview("refresh");
 	tListview.trigger('create');
-	$("#lv_dept_root ul").listview("refresh");
 }
 
 // 직위 listview 생성
