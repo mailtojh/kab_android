@@ -477,7 +477,7 @@ uf_setDeptList = function(aDepts) {
 	arrHtml[j++] = "</div>";
 	if(tPreLevel!="1") arrHtml[j++] = "</div>";
 	tListview.html( arrHtml.join('') );
-
+alert(arrHtml.join(''))
 	tListview.trigger('create');
 	$("#lv_dept_root ul").listview("refresh");
 }
