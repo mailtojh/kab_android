@@ -35,7 +35,10 @@
 .login_form , .login_form_2 {margin-top:90px;}
 .login_form_2 {display:none;}
 
+
 #page_dept .ui-content, #page_dept .ui-collapsible-content { padding:0 15px; }
 #page_dept .ui-collapsible-content>.ui-listview { margin: 0 -15px; }
 
 
+.ui-collapsible[dept-level="2"] a {padding-left:25px;}
+.ui-collapsible[dept-level="2"] li {padding:0 0 0 50px;}
