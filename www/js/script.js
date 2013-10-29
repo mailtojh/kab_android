@@ -82,10 +82,9 @@ uf_initialize_data = function () {
 	db = window.openDatabase("kab_member", "1.0", "KAB Member DB", 1000000);
 	db.transaction(populateDB, errorCB, successCB);
 
-
 	// 직원목록 넣기
 	uf_getEmpList();
-	
+
 	// 부서목록 넣기
 	uf_getDeptList();
 
@@ -191,10 +190,8 @@ uf_initialize_data = function () {
 // 직원목록 가져오기 - server
 uf_getEmpList = function() {
 	$.ajax({
-		//url : "http://ideanamu.dothome.co.kr/kab/staff600.php",
-		//url : "http://kabmobile.mighty-x.com:8080/Mighty/mobile/emp.jsp",
-		url : "http://kabmobile.mighty-x.com:8080/Mighty/mobile/GetEmpList.jsp",
-		data : {empno:"99999", handno:"010-3745-9033", mac:"AB.CD.EF.GH"},
+		url : gvUrl + "GetEmpList.jsp",
+		data : {empno:gvEmpno, handno:gvHandno, mac:gvUrl},
 		dataType : "jsonp",
 		jsonp : "callback",
 		success : function(d){
@@ -218,14 +215,8 @@ uf_getEmpList = function() {
 uf_getDeptList = function() {
 	$.ajax({
 		type: "POST",
-		//url : "http://kabmobile.mighty-x.com:8080/mighty/ajax.do",
-		//url : "http://kabmobile.mighty-x.com:8080/Mighty/mobile/dept.jsp",
-		
-		url : "http://kabmobile.mighty-x.com:8080/Mighty/mobile/GetDeptList.jsp",
-		//url : "dept.json",
-		
-		//data: "params="+_X.EncodeParam("XmlSelect" + _Param_Separate + "JSON" + _Param_Separate + "sm" + _Param_Separate + _X.IsNull("CodeEmp","") + _Param_Separate + _X.IsNull("CODE_EMP","") + _Param_Separate + _X.IsNull("%,%,%","") + _Param_Separate + _X.IsNull("all","") + _Param_Separate + _X.IsNull("˛","") + _Param_Separate + _X.IsNull("¸","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","")),
-		data : {empno:"99999", handno:"010-3745-9033", mac:"AB.CD.EF.GH"},
+		url : gvUrl+"GetDeptList.jsp",
+		data : {empno:gvEmpno, handno:gvHandno, mac:gvMac},
 		dataType : "jsonp",
 		jsonp : "callback",
 		success : function(d){
@@ -245,10 +236,8 @@ uf_getDeptList = function() {
 uf_getPositionList = function() {
 	$.ajax({
 		type: "POST",
-		//url : "http://kabmobile.mighty-x.com:8080/Mighty/mobile/jikwi.jsp",
-		url : "http://kabmobile.mighty-x.com:8080/Mighty/mobile/GetJikwiList.jsp",
-		//data: "params="+_X.EncodeParam("XmlSelect" + _Param_Separate + "JSON" + _Param_Separate + "sm" + _Param_Separate + _X.IsNull("CodeEmp","") + _Param_Separate + _X.IsNull("CODE_EMP","") + _Param_Separate + _X.IsNull("%,%,%","") + _Param_Separate + _X.IsNull("all","") + _Param_Separate + _X.IsNull("˛","") + _Param_Separate + _X.IsNull("¸","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","") + _Param_Separate + _X.IsNull("","")),
-		data : {empno:"99999", handno:"010-3745-9033", mac:"AB.CD.EF.GH"},
+		url : gvUrl+"GetJikwiList.jsp",
+		data : {empno:gvEmpno, handno:gvHandno, mac:gvMac},
 		dataType : "jsonp",
 		jsonp : "callback",
 		success : function(d){
@@ -631,9 +620,9 @@ uf_chkregnumber = function() {
 
 uf_openapp = function() {
 	//단말 로컬에 있는 어플리케이션 실행
-  document.checkframe.location = "com.ezwel.ezmobile"; //("스키마://호스트" 양식임)
+  //document.checkframe.location = "com.ezwel.ezmobile"; //("스키마://호스트" 양식임)
   //1초 후에 다음 펑션을 수행
-	setTimeout("checkApplicationInstall_callback()", 1000);
+	//setTimeout("checkApplicationInstall_callback()", 1000);
 }
 
 
