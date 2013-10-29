@@ -472,12 +472,14 @@ uf_setDeptList = function(aDepts) {
 
 		tPreLevel = aDepts[i].DATA_LVL;
 	}
+
 	if(tPreLevel=="3") arrHtml[j++] = '</ul>';
 	arrHtml[j++] = "</div>";
 	if(tPreLevel!="1") arrHtml[j++] = "</div>";
 	tListview.html( arrHtml.join('') );
 
 	tListview.trigger('create');
+	$("#lv_dept_root ul").listview("refresh");
 }
 
 // 직위 listview 생성
