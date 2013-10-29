@@ -449,7 +449,7 @@ uf_setDeptList = function(aDepts) {
 		if(tPreLevel==aDepts[i].DATA_LVL&&(tPreLevel!="3")) arrHtml[j++] = "</div>";
 
 		if(aDepts[i].DATA_LVL!="3") { 
-			arrHtml[j++] = '<div id="lv_dept_'+(aDepts[i].DATA_LVL=="1"?aDepts[i].LVL_CD1:aDepts[i].LVL_CD2)+'" data-role="collapsible" '+(aDepts[i].DATA_LVL=="2"?' data-collapsed-icon="plus" data-expanded-icon="minus" data-inset="true" data-theme="b" ':"")+'><h2>'+(aDepts[i].DATA_LVL=="1"?aDepts[i].LVL_NM1:aDepts[i].LVL_NM2)+'</h2>';
+			arrHtml[j++] = '<div id="lv_dept_'+(aDepts[i].DATA_LVL=="1"?aDepts[i].LVL_CD1:aDepts[i].LVL_CD2)+'" data-role="collapsible" '+(aDepts[i].DATA_LVL=="2"?' data-collapsed-icon="plus" data-expanded-icon="minus" data-theme="b" ':"")+'><h2>'+(aDepts[i].DATA_LVL=="1"?aDepts[i].LVL_NM1:aDepts[i].LVL_NM2)+'</h2>';
 		}
 
 		if(aDepts[i].DATA_LVL=="3"&&tPreLevel!="3") { 
