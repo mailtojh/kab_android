@@ -39,8 +39,8 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-//var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
-var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
+var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
+//var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
 
 // jqm을 시작합니다. - phonegap load 후에 jqm 시작
 uf_jq_initialize = function() {
@@ -168,35 +168,6 @@ uf_initialize_data = function () {
 }
 
 
-//$(function() {
-  //alert(device.platform + device.uuid);
-	//$("#chk_phone_number").val(device.uuid);
-	//if( $.cookie('uid') ) {
-	//	$.mobile.changePage("#page_index");
-	//}
-	//alert( getCookie('uid') );
-
-
-
-	/*
-
-	$("#btn_chk_phone2").click( function() { alert(0)
-		$.mobile.changePage( "#page_index" , { transition: "slideleft" });
-	});
-
-
-	$("#page_dept a,#page_position a").on("click", function(e) {
-		if($(this).attr("id")=="part_1"||$(this).attr("id")=="position_1") {
-			$.mobile.changePage("#page_emp_part", { transition: "slideleft" });
-			uf_setPartEmpList();
-		}
-	});
-	*/
-
-//});
-
-
-
 // 직원목록 가져오기 - server
 uf_getEmpList = function() {
 	$.ajax({
@@ -302,7 +273,7 @@ uf_setEmpPage = function(aList) {
 		//tLi = '<li><a href="#"><img src="'+gEmpLists[gEmpResults.item(tCurI).id].photo+'" height="70" align="left"><h2>'+gEmpLists[gEmpResults.item(tCurI).id].name+' <span class="emp_posname">'+gEmpLists[gEmpResults.item(tCurI).id].posname+'</span></h2><p>'+gEmpLists[gEmpResults.item(tCurI).id].deptname+'</p></a><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
 
 		//노사진버전
-		tLi = '<li><a href="#"><h2>'+gEmpLists[gEmpResults.item(tCurI).id].HNAME+' <span class="emp_posname">'+gEmpLists[gEmpResults.item(tCurI).id].JWNAME+'</span></h2><p>'+gEmpLists[gEmpResults.item(tCurI).id].DPNAME+" "+gEmpLists[gEmpResults.item(tCurI).id].TMNAME+'</p></a><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
+		tLi = '<li><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#page_emp_detail" data-transition="slide"><h2>'+gEmpLists[gEmpResults.item(tCurI).id].HNAME+' <span class="emp_posname">'+gEmpLists[gEmpResults.item(tCurI).id].JWNAME+'</span></h2><p>'+gEmpLists[gEmpResults.item(tCurI).id].DPNAME+" "+gEmpLists[gEmpResults.item(tCurI).id].TMNAME+'</p></a></li>';
 
 		tmpList.append( tLi );
 	}
@@ -415,11 +386,11 @@ uf_setSearchPartResult = function(tx, results) {
 
 		//노사진버전
 		//tLi = '<li><a href="#"><h2>'+gEmpLists[tEmpPartResults.item(i).id].CB+' <span class="emp_posname">'+gEmpLists[tEmpPartResults.item(i).id].CI+'</span></h2><p>'+gEmpLists[tEmpPartResults.item(i).id].CE+'</p></a><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
-		tLi = '<li><a href="#"><h2>'+tEmpPartResults.item(i).name+' <span class="emp_posname">'+tEmpPartResults.item(i).jwname+'</span></h2><p>'+tEmpPartResults.item(i).dpname+" "+tEmpPartResults.item(i).tmname+'</p></a><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
+		tLi = '<li><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#page_emp_detail" data-transition="slide"><h2>'+tEmpPartResults.item(i).name+' <span class="emp_posname">'+tEmpPartResults.item(i).jwname+'</span></h2><p>'+tEmpPartResults.item(i).dpname+" "+tEmpPartResults.item(i).tmname+'</p></a></li>';
 
 		tmpList.append( tLi );
 	}
-//alert(0)
+
 	tmpList.listview("refresh");
 	uf_setPartCheckboxEvent();
 	//uf_setEmpPage("ul#emp_list");
