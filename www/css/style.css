@@ -38,6 +38,7 @@
 
 #page_dept .ui-content, #page_dept .ui-collapsible-content { padding:0 15px; }
 #page_dept .ui-collapsible-content>.ui-listview { margin: 0 -15px; }
+#page_dept .ui-collapsible-set {margin:0px;}
 
 
 .ui-collapsible[dept-level="2"] a {padding-left:25px;}

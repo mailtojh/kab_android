@@ -19,6 +19,8 @@ var uf_showLoading;
 var uf_setDeptList;
 var uf_setJikwiList;
 var uf_openapp;
+var uf_sendSmsAll;
+var uf_setMsgCount;
 
 var gPhoneNum;
 var gEmpLists; // 직원 목록
@@ -443,7 +445,7 @@ uf_setDeptList = function(aDepts) {
 		}
 
 		if(aDepts[i].DATA_LVL=="3") { 
-			arrHtml[j++] = '<li><a id="dpcode_'+aDepts[i].LVL_CD2+'_'+aDepts[i].LVL_CD3+'" href="#page_emp_part">'+aDepts[i].LVL_NM3+'<span class="ui-li-count">'+aDepts[i].LVL_CNT3+'</span></a></li>';
+			arrHtml[j++] = '<li><a id="dpcode_'+aDepts[i].LVL_CD2+'_'+aDepts[i].LVL_CD3+'" href="#page_emp_part" data-transition="slide">'+aDepts[i].LVL_NM3+'<span class="ui-li-count">'+aDepts[i].LVL_CNT3+'</span></a></li>';
 		}
 
 		tPreLevel = aDepts[i].DATA_LVL;
@@ -612,5 +614,75 @@ uf_openapp = function() {
   //1초 후에 다음 펑션을 수행
 	//setTimeout("checkApplicationInstall_callback()", 1000);
 }
+
+
+uf_sendSmsAll = function() {
+	var tMsg = $("#sms_all_msa").val();
+	
+	if(tMsg.length==0) { // alert(0)
+		//$("#popupDialogAlert").dialog();
+		//$.mobile.changePage('#popupDialogAlert', {transition: 'pop', role: 'dialog'});
+		//$('#popupDialogAlert').popup("open");
+		//$('#popupDialogAlert').popup("open", {positionTo: '#page_sms'});
+		//$('#popupDialogAlert').dialog('open');
+		//$('#popupDialogSms').close();
+		//$.mobile.changePage( "#popupDialogAlert", { role: "dialog" } );
+		//$.mobile.changePage('#popupDialogAlert', {transition: 'pop', role: 'dialog'});
+		alert("메세지 내용을 입력하세요");
+		return false;
+	} else {
+		$.ajax({
+			type: "POST",
+			url : gvUrl + "sendSMS.jsp",
+			data: { handno : gvHandno, empno : gvEmpno, mac : gvMac, receiver : "ALL", msg : tMsg },
+			dataType : "jsonp",
+			jsonp : "callback",
+			success : function(d){ 
+				if(d.result=="OK") {
+					alert("메세지를 전송했습니다.");
+				} else {
+					alert("메세지 전송에 실패했습니다. 담당자에게 문의하세요.");
+				}
+			}
+		});
+	}
+}
+
+uf_setMsgCount = function() {
+	$("#sms_char_count").html( "( " + fc_chk_byte($("#sms_all_msa").val() )+" / 70자 )");
+}
+
+function fc_chk_byte(aro_val)
+{
+	var ls_str = aro_val; // 이벤트가 일어난 컨트롤의 value 값
+	var li_str_len = ls_str.length; // 전체길이
+	
+	// 변수초기화
+	var i = 0; // for문에 사용
+	var li_byte = 0; // 한글일경우는 2 그밗에는 1을 더함
+	var li_len = 0; // substring하기 위해서 사용
+	var ls_one_char = ""; // 한글자씩 검사한다
+	var ls_str2 = ""; // 글자수를 초과하면 제한할수 글자전까지만 보여준다.
+	
+	for(i=0; i< li_str_len; i++)
+	{
+		// 한글자추출
+		ls_one_char = ls_str.charAt(i);
+		
+		// 한글이면 2를 더한다.
+		if (escape(ls_one_char).length > 4)
+		{
+			li_byte += 2;
+		}
+		// 그밗의 경우는 1을 더한다.
+		else
+		{
+			li_byte++;
+		}
+	}
+	
+	return li_byte;
+}
+
 
 
