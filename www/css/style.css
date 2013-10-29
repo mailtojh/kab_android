@@ -6,8 +6,6 @@
 #page_emp .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb { padding-left:120px; }
 
 #page_emp ul#emp_list {margin-top:-12px;}
-#page_emp ul#emp_list .ui-link-inherit { background:url(./images/icon_checkbox_off.png) no-repeat 10px; padding-left:40px; }
-#page_emp ul#emp_list .ui-link-inherit.bg_checkbox { background:url(./images/icon_checkbox_on.png) no-repeat 10px; }
 
 /* #page_emp h2.ui-li-heading {margin:0 0 7px 0;} */
 
@@ -33,8 +31,6 @@
 #page_emp_part div.row_select {margin:0;padding:0;background-color:#000; padding-left:45px;}
 #page_emp_part .ui-li-thumb, .ui-listview .ui-li-icon, .ui-li-content {margin:5px 0 5px 40px;}
 #page_emp_part .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb { padding-left:120px; }
-#page_emp_part ul#emp_list_part .ui-link-inherit { background:url(./images/icon_checkbox_off.png) no-repeat 10px; padding-left:40px; }
-#page_emp_part ul#emp_list_part .ui-link-inherit.bg_checkbox { background:url(./images/icon_checkbox_on.png) no-repeat 10px; }
 
 .login_form , .login_form_2 {margin-top:90px;}
 .login_form_2 {display:none;}

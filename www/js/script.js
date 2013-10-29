@@ -320,9 +320,11 @@ uf_saveDBEmpList = function() {
 
 // checkbox Event 설정 - 데이터 갱신하면 실행해줍니다.
 uf_setCheckboxEvent = function() {
+	/*
 	$("#page_emp ul#emp_list li a.ui-link-inherit").on("click", function(e) { 
 		$(this).toggleClass("bg_checkbox");
 	});
+	*/
 	
 	$("#page_emp a").on("click", function(e) {
 		if($(this).attr("id")&&$(this).attr("id").substr(0,10)=="emp_detail") {
@@ -334,8 +336,7 @@ uf_setCheckboxEvent = function() {
 
 // 직원 세부정보 넣기
 uf_setEmpInfo = function() { 
-	// alert(gEmpLists[gCurrentEmp].name);
-	$("#emp_info_photo").attr("src", "http://kabmobile.mighty-x.com:8080/Mighty/mobile/GetEmpPic.jsp?empno="+gEmpLists[gCurrentEmp].EMPNO);
+	$("#emp_info_photo").attr("src", gvUrl + "GetEmpPic.jsp?empno="+gEmpLists[gCurrentEmp].EMPNO);
 	$("#emp_info_deptname").html(gEmpLists[gCurrentEmp].DPNAME+" "+gEmpLists[gCurrentEmp].TMNAME);//gEmpLists[gCurrentEmp].deptname);
 	$("#emp_info_name").html(gEmpLists[gCurrentEmp].HNAME); //gEmpLists[gCurrentEmp].name);
 	$("#emp_info_posname").html(gEmpLists[gCurrentEmp].JWNAME); //gEmpLists[gCurrentEmp].posname);
@@ -343,6 +344,8 @@ uf_setEmpInfo = function() {
 	$("#emp_info_telcomp span.ui-btn-inner").html("회사 : "+gEmpLists[gCurrentEmp].O_TELNO); //gEmpLists[gCurrentEmp].telcomp);
 	$("#emp_info_telcell a").attr("href", "tel:"+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
 	$("#emp_info_telcell span.ui-btn-inner").html("휴대폰 : "+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
+	$("#emp_info_smscell a").attr("href", "sms:"+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
+	$("#emp_info_smscell span.ui-btn-inner").html("문자 : "+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
 	$("#emp_info_email a").attr("href", "mailto:"+gEmpLists[gCurrentEmp].EMAIL); //gEmpLists[gCurrentEmp].email);
 	$("#emp_info_email span.ui-btn-inner").html("이메일 : "+gEmpLists[gCurrentEmp].EMAIL); //gEmpLists[gCurrentEmp].email);
 	//$("#emp_info_telcomp").html( '<a href="tel:'+gEmpLists[gCurrentEmp].telcomp+'" data-role="button">'+gEmpLists[gCurrentEmp].telcomp+'</a>' );
@@ -398,9 +401,11 @@ uf_setSearchPartResult = function(tx, results) {
 
 // checkbox Event 설정 - 데이터 갱신하면 실행해줍니다.
 uf_setPartCheckboxEvent = function() {
+	/*
 	$("#page_emp_part ul#emp_list_part li a.ui-link-inherit").on("click", function(e) { 
 		$(this).toggleClass("bg_checkbox");
 	});
+	*/
 	
 	$("#page_emp_part a").on("click", function(e) {
 		if($(this).attr("id")&&$(this).attr("id").substr(0,10)=="emp_detail") {
