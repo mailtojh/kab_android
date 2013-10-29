@@ -76,10 +76,10 @@ uf_jq_initialize = function() {
 // 인증 후, 데이터 초기화
 uf_initialize_data = function () {
 	// 테스트 데이터 세팅
-	alert('get data')
-	gvEmpno = "90001";
-	gvMac = "d5aa0e0b9287122c";
-	gvHandno = "01037062216";
+	//alert('get data')
+	//gvEmpno = "90001";
+	//gvMac = "d5aa0e0b9287122c";
+	//gvHandno = "01037062216";
 
 
 	uf_showLoading("show");
@@ -450,7 +450,6 @@ uf_setDeptList = function(aDepts) {
 	
 	for(var i in aDepts) {
 		if(tPreLevel=="3"&&aDepts[i].DATA_LVL!=tPreLevel) arrHtml[j++] = '</ul>';
-		if(tPreLevel=="2"&&aDepts[i].DATA_LVL==tPreLevel) arrHtml[j++] = '</div>';
 		if(aDepts[i].DATA_LVL<tPreLevel&&tPreLevel!="") {
 			//arrHtml[j++] = "</div>";
 			if(tPreLevel=="3"&&aDepts[i].DATA_LVL=="1") arrHtml[j++] = "</div></div>";
