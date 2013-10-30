@@ -148,11 +148,13 @@ uf_initialize_data = function () {
 
   	// 임원 예외처리
   	$("#lv_dept_10000 a").on("click", function() {
+  		$.mobile.changePage("#page_emp_part", {transition:"slide"});
   		uf_setPartEmpList("dpcode2_10000");
   	});
 
   	// 노조 예외처리
   	$("#lv_dept_9999 a").on("click", function() {
+  		$.mobile.changePage("#page_emp_part", {transition:"slide"});
   		uf_setPartEmpList("dpcode2_9999");
   	});
   	
@@ -399,8 +401,7 @@ uf_setSearchPartResult = function(tx, results) {
 
 		//노사진버전
 		//tLi = '<li><a href="#"><h2>'+gEmpLists[tEmpPartResults.item(i).id].CB+' <span class="emp_posname">'+gEmpLists[tEmpPartResults.item(i).id].CI+'</span></h2><p>'+gEmpLists[tEmpPartResults.item(i).id].CE+'</p></a><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
-		//tLi = '<li><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#page_emp_detail" data-transition="slide"><h2>'+tEmpPartResults.item(i).name+' <span class="emp_posname">'+tEmpPartResults.item(i).jwname+'</span></h2><p>'+tEmpPartResults.item(i).dpname+' '+tEmpPartResults.item(i).tmname+'</p></a></li>';
-		tLi = '<li>aaa</li>';
+		tLi = '<li><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#page_emp_detail" data-transition="slide"><h2>'+tEmpPartResults.item(i).name+' <span class="emp_posname">'+tEmpPartResults.item(i).jwname+'</span></h2><p>'+tEmpPartResults.item(i).dpname+' '+tEmpPartResults.item(i).tmname+'</p></a></li>';
 
 		tmpList.append( tLi );
 	}
