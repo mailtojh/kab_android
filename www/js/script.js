@@ -145,6 +145,17 @@ uf_initialize_data = function () {
  
   		uf_setPartEmpList(tId);
   	});
+
+  	// 임원 예외처리
+  	$("#lv_dept_10000 a").on("click", function() {
+  		uf_setPartEmpList("dpcode2_10000");
+  	});
+
+  	// 노조 예외처리
+  	$("#lv_dept_9999 a").on("click", function() {
+  		uf_setPartEmpList("dpcode2_9999");
+  	});
+  	
 	});
 
 	// 직위별 페이지 init
@@ -366,7 +377,7 @@ uf_setPartEmpList = function(aId) {
 	uf_showLoading("show");
 	db.transaction(function(tx) {
 		//var tmpSql = 'select * from MEMBER where dpcode="'+tId[1]+'" ';
-		var tmpSql = "select * from MEMBER where "+(tId[0]=="dpcode"?"dpcode='"+tId[1]+"' and tmcode='"+tId[2]+"' ":"jwcode='"+tId[1]+"' ")
+		var tmpSql = "select * from MEMBER where "+(tId[0]=="dpcode"?"dpcode='"+tId[1]+"' and tmcode='"+tId[2]+"' ":(tId[0]=="jwcode"?"jwcode='"+tId[1]+"' ":"dpcode='"+tId[1]+"' ")) ;
 		// alert(tmpSql);
 		// tx.executeSql('select * from MEMBER where 1 ', [], uf_setSearchPartResult, errorCB);
 		tx.executeSql( tmpSql, [], uf_setSearchPartResult, errorCB);
