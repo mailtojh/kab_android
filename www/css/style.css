@@ -43,3 +43,8 @@
 
 .ui-collapsible[dept-level="2"] a {padding-left:25px;}
 .ui-collapsible[dept-level="2"] li {padding:0 0 0 50px;}
+
+
+#sms_all_msa {min-height:120px;}
+
+
