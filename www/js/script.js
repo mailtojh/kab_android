@@ -41,8 +41,8 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-//var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
-var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
+var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
+//var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
 
 // jqm을 시작합니다. - phonegap load 후에 jqm 시작
 uf_jq_initialize = function() {
@@ -113,6 +113,8 @@ uf_initialize_data = function () {
 		//$( "#emp_search" ).keypress( function() {
 		//	alert($(this).val());
 		//});
+		uf_searchEmp("%");
+
 		$( "#btn_search" ).click(function() {
 			uf_searchEmp( $( "#emp_search" ).val() );
 		});
