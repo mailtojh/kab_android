@@ -390,16 +390,20 @@ uf_setSearchPartResult = function(tx, results) {
 	var tmpList = $("#emp_list_part");
 	tmpList.empty();
 	var tEmpPartResults = results.rows;
-		alert(tEmpPartResults.length);
+		// alert(tEmpPartResults.length);
 	  // alert(tEmpPartResults.item(0).name);
 	
 	for(var i=0;i<tEmpPartResults.length;i++) {
 		//사진버젼
 		//tLi = '<li><a href="#"><img src="'+gEmpLists[gEmpResults.item(tCurI).id].photo+'" height="70" align="left"><h2>'+gEmpLists[gEmpResults.item(tCurI).id].name+' <span class="emp_posname">'+gEmpLists[gEmpResults.item(tCurI).id].posname+'</span></h2><p>'+gEmpLists[gEmpResults.item(tCurI).id].deptname+'</p></a><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
-
+alert(tEmpPartResults.item(i).id)
+alert(tEmpPartResults.item(i).name)
+alert(tEmpPartResults.item(i).jwname)
+alert(tEmpPartResults.item(i).dpname)
+alert(tEmpPartResults.item(i).tmname)
 		//노사진버전
 		//tLi = '<li><a href="#"><h2>'+gEmpLists[tEmpPartResults.item(i).id].CB+' <span class="emp_posname">'+gEmpLists[tEmpPartResults.item(i).id].CI+'</span></h2><p>'+gEmpLists[tEmpPartResults.item(i).id].CE+'</p></a><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
-		tLi = '<li><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#page_emp_detail" data-transition="slide"><h2>'+tEmpPartResults.item(i).name+' <span class="emp_posname">'+tEmpPartResults.item(i).jwname+'</span></h2><p>'+tEmpPartResults.item(i).dpname+" "+'</p></a></li>';
+		tLi = '<li><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#page_emp_detail" data-transition="slide"><h2>'+tEmpPartResults.item(i).name+' <span class="emp_posname">'+tEmpPartResults.item(i).jwname+'</span></h2><p>'+tEmpPartResults.item(i).dpname+' '+tEmpPartResults.item(i).tmname+'</p></a></li>';
 
 		tmpList.append( tLi );
 	}
