@@ -378,7 +378,7 @@ uf_setPartEmpList = function(aId) {
 	db.transaction(function(tx) {
 		//var tmpSql = 'select * from MEMBER where dpcode="'+tId[1]+'" ';
 		var tmpSql = "select * from MEMBER where "+(tId[0]=="dpcode"?"dpcode='"+tId[1]+"' and tmcode='"+tId[2]+"' ":(tId[0]=="jwcode"?"jwcode='"+tId[1]+"' ":"dpcode='"+tId[1]+"' ")) ;
-		alert(tmpSql)
+		// alert(tmpSql)
 		// alert(tmpSql);
 		// tx.executeSql('select * from MEMBER where 1 ', [], uf_setSearchPartResult, errorCB);
 		tx.executeSql( tmpSql, [], uf_setSearchPartResult, errorCB);
@@ -386,9 +386,8 @@ uf_setPartEmpList = function(aId) {
 		// tx.executeSql('select * from MEMBER ', [], uf_setSearchPartResult, errorCB);
 		//gEmpCurPage = 0;
 	}, errorCB);
-
-	
 }
+
 
 // 직원목록(부서별, 직위별) 표시
 uf_setSearchPartResult = function(tx, results) { 
@@ -396,7 +395,7 @@ uf_setSearchPartResult = function(tx, results) {
 	var tmpList = $("#emp_list_part");
 	tmpList.empty();
 	var tEmpPartResults = results.rows;
-	//alert(tEmpPartResults.length);
+alert(tEmpPartResults.length);
 	// alert(tEmpPartResults.item(0).name);
 	
 	for(var i=0;i<tEmpPartResults.length;i++) {
