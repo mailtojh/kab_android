@@ -255,7 +255,7 @@ uf_getPositionList = function() {
 uf_searchEmp = function(aVal) {
 	uf_showLoading("show");
 	db.transaction(function(tx) {
-		tx.executeSql('select * from MEMBER where name like "%'+aVal+'%" ', [], uf_setSearchResult, errorCB);
+		tx.executeSql('select * from MEMBER where name like "%'+aVal+'%" and dpcode <> "9999"', [], uf_setSearchResult, errorCB);
 		//alert('select * from MEMBER where name like "%'+aVal+'%" ');
 		//tx.executeSql('select * from MEMBER ', [], uf_setSearchResult, errorCB);
 		gEmpCurPage = 0;
