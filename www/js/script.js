@@ -635,7 +635,7 @@ uf_sendSmsAll = function() {
 	} else {
 		$.ajax({
 			type: "POST",
-			url : gvUrl + "sendSMS.jsp",
+			url : gvUrl + "SendSMS.jsp",
 			data: { handno : gvHandno, empno : gvEmpno, mac : gvMac, receiver : "ALL", msg : tMsg },
 			dataType : "jsonp",
 			jsonp : "callback",
