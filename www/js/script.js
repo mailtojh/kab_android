@@ -348,8 +348,8 @@ uf_setEmpInfo = function() {
 	$("#emp_info_telcomp span.ui-btn-inner").html("회사 : "+gEmpLists[gCurrentEmp].O_TELNO); //gEmpLists[gCurrentEmp].telcomp);
 	$("#emp_info_telcell a").attr("href", "tel:"+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
 	$("#emp_info_telcell span.ui-btn-inner").html("휴대폰 : "+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
-	$("#emp_info_smscell a").attr("href", "sms:"+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
-	$("#emp_info_smscell span.ui-btn-inner").html("문자 : "+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
+	//$("#emp_info_smscell a").attr("href", "sms:"+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
+	//$("#emp_info_smscell span.ui-btn-inner").html("문자 : "+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
 	$("#emp_info_email a").attr("href", "mailto:"+gEmpLists[gCurrentEmp].EMAIL); //gEmpLists[gCurrentEmp].email);
 	$("#emp_info_email span.ui-btn-inner").html("이메일 : "+gEmpLists[gCurrentEmp].EMAIL); //gEmpLists[gCurrentEmp].email);
 	//$("#emp_info_telcomp").html( '<a href="tel:'+gEmpLists[gCurrentEmp].telcomp+'" data-role="button">'+gEmpLists[gCurrentEmp].telcomp+'</a>' );
