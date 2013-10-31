@@ -41,8 +41,8 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-//var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
-var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
+var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
+//var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
 
 // jqm을 시작합니다. - phonegap load 후에 jqm 시작
 uf_jq_initialize = function() {
@@ -286,17 +286,18 @@ uf_setEmpPage = function(aList) {
 
 	for(var i=0;i<tLoopCnt;i++) {
 		tCurI = (gEmpCurPage*gCntPage)+i ;
-		//사진버젼
-		//tLi = '<li><a href="#"><img src="'+gEmpLists[gEmpResults.item(tCurI).id].photo+'" height="70" align="left"><h2>'+gEmpLists[gEmpResults.item(tCurI).id].name+' <span class="emp_posname">'+gEmpLists[gEmpResults.item(tCurI).id].posname+'</span></h2><p>'+gEmpLists[gEmpResults.item(tCurI).id].deptname+'</p></a><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
+		//사진버젼 gvUrl + "GetEmpPic.jsp?empno="+gEmpLists[gCurrentEmp].EMPNO
+		//tLi = '<li><a href="#"><img src="'+gvUrl+"GetEmpPic2.jsp?empno="+gEmpLists[gEmpResults.item(tCurI).id].empno+'" height="70" align="left"><h2>'+gEmpLists[gEmpResults.item(tCurI).id].name+' <span class="emp_posname">'+gEmpLists[gEmpResults.item(tCurI).id].posname+'</span></h2><p>'+gEmpLists[gEmpResults.item(tCurI).id].deptname+'</p></a><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
+		tLi = '<li><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#" data-transition="slide"><img src="'+gvUrl+"GetEmpPic2.jsp?empno="+gEmpLists[gEmpResults.item(tCurI).id].empno+'" height="70" align="left"><h2>'+gEmpLists[gEmpResults.item(tCurI).id].HNAME+' <span class="emp_posname">'+gEmpLists[gEmpResults.item(tCurI).id].JWNAME+'</span></h2><p>'+gEmpLists[gEmpResults.item(tCurI).id].DPNAME+" "+gEmpLists[gEmpResults.item(tCurI).id].TMNAME+'</p></a><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
 
 		//노사진버전
-		tLi = '<li><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#page_emp_detail" data-transition="slide"><h2>'+gEmpLists[gEmpResults.item(tCurI).id].HNAME+' <span class="emp_posname">'+gEmpLists[gEmpResults.item(tCurI).id].JWNAME+'</span></h2><p>'+gEmpLists[gEmpResults.item(tCurI).id].DPNAME+" "+gEmpLists[gEmpResults.item(tCurI).id].TMNAME+'</p></a></li>';
+		//tLi = '<li><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#page_emp_detail" data-transition="slide"><h2>'+gEmpLists[gEmpResults.item(tCurI).id].HNAME+' <span class="emp_posname">'+gEmpLists[gEmpResults.item(tCurI).id].JWNAME+'</span></h2><p>'+gEmpLists[gEmpResults.item(tCurI).id].DPNAME+" "+gEmpLists[gEmpResults.item(tCurI).id].TMNAME+'</p></a></li>';
 
 		tmpList.append( tLi );
 	}
 
 	tmpList.listview("refresh");
-	setTimeout( "uf_setCheckboxEvent()", 500 );
+	setTimeout( "uf_setCheckboxEvent()", 50 );
 
 	gEmpCurPage++;
 }
@@ -310,6 +311,7 @@ uf_saveDBEmpList = function() {
 		{
 			tId = i; 
 			tName = gEmpLists[i].HNAME; // gEmpLists[i].name;
+			tEmpno = gEmpLists[i].EMPNO;
 			tTelcell = gEmpLists[i].HANDNO; // gEmpLists[i].telcell;
 			tTelcomp = gEmpLists[i].O_TELNO; // gEmpLists[i].telcomp;
 			tZonecode = gEmpLists[i].ZONECODE;
@@ -326,7 +328,7 @@ uf_saveDBEmpList = function() {
 			//tLi = '<li><a href="#"><h2>'+(i>2?"장길산":"홍길동")+' <span class="emp_posname">과장</span></h2></a><a href="dept.html"></a></li>';
 		
 			// emp_list.append( tLi );
-			tx.executeSql('INSERT INTO MEMBER (id, name, telcomp, telcell, zonecode, zonecodenm, dpcode, dpname, tmcode, tmname, jwcode, jwname) VALUES ('+tId+', "'+tName+'", "'+tTelcomp+'", "'+tTelcell+'", "'+tZonecode+'", "'+tZonecodenm+'", "'+tDpcode+'", "'+tDpname+'", "'+tTmcode+'", "'+tTmname+'", "'+tJwcode+'", "'+tJwname+'") ');
+			tx.executeSql('INSERT INTO MEMBER (id, name, empno, telcomp, telcell, zonecode, zonecodenm, dpcode, dpname, tmcode, tmname, jwcode, jwname) VALUES ('+tId+', "'+tName+'", "'+tEmpno+'", "'+tTelcomp+'", "'+tTelcell+'", "'+tZonecode+'", "'+tZonecodenm+'", "'+tDpcode+'", "'+tDpname+'", "'+tTmcode+'", "'+tTmname+'", "'+tJwcode+'", "'+tJwname+'") ');
 		}
 	}, errorCB, successCB);
 
@@ -337,11 +339,9 @@ uf_saveDBEmpList = function() {
 
 // checkbox Event 설정 - 데이터 갱신하면 실행해줍니다.
 uf_setCheckboxEvent = function() {
-	/*
 	$("#page_emp ul#emp_list li a.ui-link-inherit").on("click", function(e) { 
 		$(this).toggleClass("bg_checkbox");
 	});
-	*/
 	
 	$("#page_emp a").on("click", function(e) {
 		if($(this).attr("id")&&$(this).attr("id").substr(0,10)=="emp_detail") {
@@ -397,11 +397,12 @@ uf_setSearchPartResult = function(tx, results) {
 	
 	for(var i=0;i<tEmpPartResults.length;i++) {
 		//사진버젼
-		//tLi = '<li><a href="#"><img src="'+gEmpLists[gEmpResults.item(tCurI).id].photo+'" height="70" align="left"><h2>'+gEmpLists[gEmpResults.item(tCurI).id].name+' <span class="emp_posname">'+gEmpLists[gEmpResults.item(tCurI).id].posname+'</span></h2><p>'+gEmpLists[gEmpResults.item(tCurI).id].deptname+'</p></a><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
+		//tLi = '<li><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#"><img src="'+gvUrl+"GetEmpPic2.jsp?empno="+gEmpLists[gEmpResults.item(tCurI).id].empno+'" height="70" align="left"><h2>'+gEmpLists[gEmpResults.item(tCurI).id].name+' <span class="emp_posname">'+gEmpLists[gEmpResults.item(tCurI).id].posname+'</span></h2><p>'+gEmpLists[gEmpResults.item(tCurI).id].deptname+'</p></a><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
+		tLi = '<li><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#" data-transition="slide"><img src="'+gvUrl+"GetEmpPic2.jsp?empno="+gEmpLists[gEmpResults.item(tCurI).id].empno+'" height="70" align="left"><h2>'+tEmpPartResults.item(i).name+' <span class="emp_posname">'+tEmpPartResults.item(i).jwname+'</span></h2><p>'+tEmpPartResults.item(i).dpname+' '+tEmpPartResults.item(i).tmname+'</p></a><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
 
 		//노사진버전
 		//tLi = '<li><a href="#"><h2>'+gEmpLists[tEmpPartResults.item(i).id].CB+' <span class="emp_posname">'+gEmpLists[tEmpPartResults.item(i).id].CI+'</span></h2><p>'+gEmpLists[tEmpPartResults.item(i).id].CE+'</p></a><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
-		tLi = '<li><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#page_emp_detail" data-transition="slide"><h2>'+tEmpPartResults.item(i).name+' <span class="emp_posname">'+tEmpPartResults.item(i).jwname+'</span></h2><p>'+tEmpPartResults.item(i).dpname+' '+tEmpPartResults.item(i).tmname+'</p></a></li>';
+		//tLi = '<li><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#page_emp_detail" data-transition="slide"><h2>'+tEmpPartResults.item(i).name+' <span class="emp_posname">'+tEmpPartResults.item(i).jwname+'</span></h2><p>'+tEmpPartResults.item(i).dpname+' '+tEmpPartResults.item(i).tmname+'</p></a></li>';
 
 		tmpList.append( tLi );
 	}
@@ -413,11 +414,10 @@ uf_setSearchPartResult = function(tx, results) {
 
 // checkbox Event 설정 - 데이터 갱신하면 실행해줍니다.
 uf_setPartCheckboxEvent = function() {
-	/*
 	$("#page_emp_part ul#emp_list_part li a.ui-link-inherit").on("click", function(e) { 
 		$(this).toggleClass("bg_checkbox");
 	});
-	*/
+	
 	
 	$("#page_emp_part a").on("click", function(e) {
 		if($(this).attr("id")&&$(this).attr("id").substr(0,10)=="emp_detail") {
@@ -650,6 +650,7 @@ uf_sendSmsAll = function() {
 			success : function(d){ 
 				if(d.result=="OK") {
 					alert("메세지를 전송했습니다.");
+					$("#sms_all_msa").val("");
 				} else {
 					alert("메세지 전송에 실패했습니다. 담당자에게 문의하세요.");
 				}
