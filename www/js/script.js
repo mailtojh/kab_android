@@ -716,7 +716,7 @@ uf_openapp = function() {
 // 주소록에 추가하기..
 uf_addcontact = function() {
 alert('주소록 0')
-/*
+
 	var contact = navigator.contacts.create();
 alert('주소록 1')
 	contact.displayName = "홍길동";
@@ -730,7 +730,7 @@ alert('주소록 2')
 	contact.save(onSaveSuccess,onSaveError);
 
 	alert('주소록에 추가합니다.')
-*/
+
 
 /*
 	$("#emp_info_photo").attr("src", gvUrl + "GetEmpPic.jsp?empno="+gEmpLists[gCurrentEmp].EMPNO);
