@@ -21,6 +21,7 @@ var uf_setJikwiList;
 var uf_openapp;
 var uf_sendSmsAll;
 var uf_setMsgCount;
+var uf_addcontact;
 
 var gPhoneNum;
 var gEmpLists; // 직원 목록
@@ -41,8 +42,8 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-//var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
-var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
+var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
+//var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
 
 // jqm을 시작합니다. - phonegap load 후에 jqm 시작
 uf_jq_initialize = function() {
@@ -620,6 +621,7 @@ uf_chkregnumber = function() {
 
 uf_openapp = function() {
 	//단말 로컬에 있는 어플리케이션 실행
+  window.open("market://details?id=com.ezwel.ezmobile");
   //document.checkframe.location = "com.ezwel.ezmobile"; //("스키마://호스트" 양식임)
   //1초 후에 다음 펑션을 수행
 	//setTimeout("checkApplicationInstall_callback()", 1000);
@@ -695,5 +697,38 @@ function fc_chk_byte(aro_val)
 	return li_byte;
 }
 
+// 주소록에 추가하기..
+uf_addcontact = function() {
+	alert('주소록 0')
+	var contact = navigator.contacts.create();
 
+	contact.displayName = "홍길동";
+	contact.nickname = "홍길동";       //specify both to support all devices
+	var name = new ContactName();
+	name.givenName = "길동";
+	name.familyName = "홍";
+	contact.name = name;
+
+	// save
+	contact.save(onSaveSuccess,onSaveError);
+
+	//alert('주소록에 추가합니다.')
+
+
+/*
+	$("#emp_info_photo").attr("src", gvUrl + "GetEmpPic.jsp?empno="+gEmpLists[gCurrentEmp].EMPNO);
+	$("#emp_info_deptname").html(gEmpLists[gCurrentEmp].DPNAME+" "+gEmpLists[gCurrentEmp].TMNAME);//gEmpLists[gCurrentEmp].deptname);
+	$("#emp_info_name").html(gEmpLists[gCurrentEmp].HNAME); //gEmpLists[gCurrentEmp].name);
+	$("#emp_info_posname").html(gEmpLists[gCurrentEmp].JWNAME); //gEmpLists[gCurrentEmp].posname);
+	$("#emp_info_telcomp a").attr("href", "tel:"+gEmpLists[gCurrentEmp].O_TELNO); //gEmpLists[gCurrentEmp].telcomp);
+	$("#emp_info_telcomp span.ui-btn-inner").html("회사 : "+gEmpLists[gCurrentEmp].O_TELNO); //gEmpLists[gCurrentEmp].telcomp);
+	$("#emp_info_telcell a").attr("href", "tel:"+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
+	$("#emp_info_telcell span.ui-btn-inner").html("휴대폰 : "+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
+	//$("#emp_info_smscell a").attr("href", "sms:"+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
+	//$("#emp_info_smscell span.ui-btn-inner").html("문자 : "+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
+	$("#emp_info_email a").attr("href", "mailto:"+gEmpLists[gCurrentEmp].EMAIL); //gEmpLists[gCurrentEmp].email);
+	$("#emp_info_email span.ui-btn-inner").html("이메일 : "+gEmpLists[gCurrentEmp].EMAIL);
+
+*/
+}
 
