@@ -715,27 +715,19 @@ uf_openapp = function() {
 
 // 주소록에 추가하기..
 uf_addcontact = function() {
-alert('주소록 0')
 
 	var contact = navigator.contacts.create();
-alert('주소록 1')
-	contact.displayName = "홍길동";
-	contact.nickname = "홍길동";       //specify both to support all devices
+
+	contact.displayName = gEmpLists[gCurrentEmp].HNAME;
+	contact.nickname = gEmpLists[gCurrentEmp].HNAME;       //specify both to support all devices
 	//contact.phoneNumbers = "010-3706-2215";
 
 	var phoneNumbers = [];
-	phoneNumbers[0] = new ContactField('home', '010-8268-0211');
+	phoneNumbers[0] = new ContactField('mobile', gEmpLists[gCurrentEmp].HANDNO);
 	contact.phoneNumbers = phoneNumbers;
-	//var name = new ContactName();
-	//name.givenName = "길동";
-	//name.familyName = "홍";
-	//contact.name = name;
-alert('주소록 2')
+alert(contact.displayName+gEmpLists[gCurrentEmp].HANDNO)
 	// save
 	contact.save(onSaveSuccess,onSaveError);
-
-	alert('주소록에 추가합니다.')
-
 
 /*
 	$("#emp_info_photo").attr("src", gvUrl + "GetEmpPic.jsp?empno="+gEmpLists[gCurrentEmp].EMPNO);
@@ -755,11 +747,11 @@ alert('주소록 2')
 }
 
 function onSaveSuccess() {
-	alert('success')
+	alert('주소록에 추가했습니다.')
 }
 
 function onSaveError(contactError) {
-	alert("Error = " + contactError.code);
+	alert("주소록을 추가하지 못했습니다.(" + contactError.code+")");
 }
 
 
