@@ -721,10 +721,15 @@ alert('주소록 0')
 alert('주소록 1')
 	contact.displayName = "홍길동";
 	contact.nickname = "홍길동";       //specify both to support all devices
-	var name = new ContactName();
-	name.givenName = "길동";
-	name.familyName = "홍";
-	contact.name = name;
+	//contact.phoneNumbers = "010-3706-2215";
+
+	var phoneNumbers = [];
+	phoneNumbers[0] = new ContactField('home', '010-8268-0211', false);
+	contact.phoneNumbers = phoneNumbers;
+	//var name = new ContactName();
+	//name.givenName = "길동";
+	//name.familyName = "홍";
+	//contact.name = name;
 alert('주소록 2')
 	// save
 	contact.save(onSaveSuccess,onSaveError);
