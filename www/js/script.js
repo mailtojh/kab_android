@@ -725,7 +725,7 @@ uf_addcontact = function() {
 	var phoneNumbers = [];
 	phoneNumbers[0] = new ContactField('mobile', gEmpLists[gCurrentEmp].HANDNO);
 	contact.phoneNumbers = phoneNumbers;
-alert(contact.displayName+gEmpLists[gCurrentEmp].HANDNO)
+//alert(contact.displayName+gEmpLists[gCurrentEmp].HANDNO)
 	// save
 	contact.save(onSaveSuccess,onSaveError);
 
