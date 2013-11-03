@@ -758,8 +758,8 @@ function onSaveSuccess() {
 	alert('success')
 }
 
-function onSaveError() {
-	alert('error')
+function onSaveError(contactError) {
+	alert("Error = " + contactError.code);
 }
 
 
