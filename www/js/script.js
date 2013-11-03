@@ -624,7 +624,7 @@ uf_sendsms = function(aPage) {
 	// sms 창 열기
 	var tPhone = [];
 	var i = 0;
-	$("#"+aPage+" ul#emp_list li a.ui-link-inherit").each(function() {
+	$("#page_emp"+aPage+" ul#emp_list"+aPage+" li a.ui-link-inherit").each(function() {
 		if( $(this).hasClass("bg_checkbox") ) {
 			//alert($(this).attr("data-phone"))
 			tPhone[i] = $(this).attr("data-phone");
@@ -632,7 +632,6 @@ uf_sendsms = function(aPage) {
 		}
 	});
 
-alert("sms:"+tPhone.join(';'));
 	location.href = "sms:"+tPhone.join(';');
 	
 }
