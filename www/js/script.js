@@ -699,20 +699,20 @@ function fc_chk_byte(aro_val)
 
 // 주소록에 추가하기..
 uf_addcontact = function() {
-	alert('주소록 0')
+alert('주소록 0')
 	var contact = navigator.contacts.create();
-
+alert('주소록 1')
 	contact.displayName = "홍길동";
 	contact.nickname = "홍길동";       //specify both to support all devices
 	var name = new ContactName();
 	name.givenName = "길동";
 	name.familyName = "홍";
 	contact.name = name;
-
+alert('주소록 2')
 	// save
 	contact.save(onSaveSuccess,onSaveError);
 
-	//alert('주소록에 추가합니다.')
+	alert('주소록에 추가합니다.')
 
 
 /*
@@ -732,3 +732,10 @@ uf_addcontact = function() {
 */
 }
 
+function onSaveSuccess() {
+	alert('success')
+}
+
+function onSaveError() {
+	alert('error')
+}
