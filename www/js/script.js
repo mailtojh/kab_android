@@ -619,15 +619,6 @@ uf_chkregnumber = function() {
 	}
 }
 
-uf_openapp = function() {
-	//단말 로컬에 있는 어플리케이션 실행
-  window.open("market://details?id=com.ezwel.ezmobile");
-  //document.checkframe.location = "com.ezwel.ezmobile"; //("스키마://호스트" 양식임)
-  //1초 후에 다음 펑션을 수행
-	//setTimeout("checkApplicationInstall_callback()", 1000);
-}
-
-
 uf_sendSmsAll = function() {
 	var tMsg = $("#sms_all_msa").val();
 	
@@ -697,9 +688,18 @@ function fc_chk_byte(aro_val)
 	return li_byte;
 }
 
+uf_openapp = function() {
+	//단말 로컬에 있는 어플리케이션 실행
+  window.open("market://details?id=com.ezwel.ezmobile");
+  //document.checkframe.location = "com.ezwel.ezmobile"; //("스키마://호스트" 양식임)
+  //1초 후에 다음 펑션을 수행
+	//setTimeout("checkApplicationInstall_callback()", 1000);
+}
+
 // 주소록에 추가하기..
 uf_addcontact = function() {
 alert('주소록 0')
+/*
 	var contact = navigator.contacts.create();
 alert('주소록 1')
 	contact.displayName = "홍길동";
@@ -713,7 +713,7 @@ alert('주소록 2')
 	contact.save(onSaveSuccess,onSaveError);
 
 	alert('주소록에 추가합니다.')
-
+*/
 
 /*
 	$("#emp_info_photo").attr("src", gvUrl + "GetEmpPic.jsp?empno="+gEmpLists[gCurrentEmp].EMPNO);
