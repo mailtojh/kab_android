@@ -724,7 +724,7 @@ alert('주소록 1')
 	//contact.phoneNumbers = "010-3706-2215";
 
 	var phoneNumbers = [];
-	phoneNumbers[0] = new ContactField('home', '010-8268-0211', false);
+	phoneNumbers[0] = new ContactField('home', '010-8268-0211');
 	contact.phoneNumbers = phoneNumbers;
 	//var name = new ContactName();
 	//name.givenName = "길동";
