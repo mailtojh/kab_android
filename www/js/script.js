@@ -290,7 +290,7 @@ uf_setEmpPage = function(aList) {
 		tCurI = (gEmpCurPage*gCntPage)+i ;
 		//사진버젼 gvUrl + "GetEmpPic.jsp?empno="+gEmpLists[gCurrentEmp].EMPNO
 		//tLi = '<li><a href="#"><img src="'+gvUrl+"GetEmpPic2.jsp?empno="+gEmpLists[gEmpResults.item(tCurI).id].empno+'" height="70" align="left"><h2>'+gEmpLists[gEmpResults.item(tCurI).id].name+' <span class="emp_posname">'+gEmpLists[gEmpResults.item(tCurI).id].posname+'</span></h2><p>'+gEmpLists[gEmpResults.item(tCurI).id].deptname+'</p></a><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
-		tLi = '<li><a data-phone="emp_detail_'+tEmpPartResults.item(i).telcell+'" href="#" data-transition="slide"><img src="'+gvUrl+"GetEmpPic2.jsp?empno="+gEmpLists[gEmpResults.item(tCurI).id].EMPNO+'" height="70" align="left"><h2>'+gEmpLists[gEmpResults.item(tCurI).id].HNAME+' <span class="emp_posname">'+gEmpLists[gEmpResults.item(tCurI).id].JWNAME+'</span></h2><p>'+gEmpLists[gEmpResults.item(tCurI).id].DPNAME+" "+gEmpLists[gEmpResults.item(tCurI).id].TMNAME+'</p></a><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
+		tLi = '<li><a data-phone="'+tEmpPartResults.item(i).telcell+'" href="#" data-transition="slide"><img src="'+gvUrl+"GetEmpPic2.jsp?empno="+gEmpLists[gEmpResults.item(tCurI).id].EMPNO+'" height="70" align="left"><h2>'+gEmpLists[gEmpResults.item(tCurI).id].HNAME+' <span class="emp_posname">'+gEmpLists[gEmpResults.item(tCurI).id].JWNAME+'</span></h2><p>'+gEmpLists[gEmpResults.item(tCurI).id].DPNAME+" "+gEmpLists[gEmpResults.item(tCurI).id].TMNAME+'</p></a><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
 
 		//노사진버전
 		//tLi = '<li><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#page_emp_detail" data-transition="slide"><h2>'+gEmpLists[gEmpResults.item(tCurI).id].HNAME+' <span class="emp_posname">'+gEmpLists[gEmpResults.item(tCurI).id].JWNAME+'</span></h2><p>'+gEmpLists[gEmpResults.item(tCurI).id].DPNAME+" "+gEmpLists[gEmpResults.item(tCurI).id].TMNAME+'</p></a></li>';
@@ -400,7 +400,7 @@ uf_setSearchPartResult = function(tx, results) {
 	for(var i=0;i<tEmpPartResults.length;i++) {
 		//사진버젼
 		//tLi = '<li><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#"><img src="'+gvUrl+"GetEmpPic2.jsp?empno="+gEmpLists[gEmpResults.item(tCurI).id].empno+'" height="70" align="left"><h2>'+gEmpLists[gEmpResults.item(tCurI).id].name+' <span class="emp_posname">'+gEmpLists[gEmpResults.item(tCurI).id].posname+'</span></h2><p>'+gEmpLists[gEmpResults.item(tCurI).id].deptname+'</p></a><a id="emp_detail_'+gEmpResults.item(tCurI).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
-		tLi = '<li><a data-phone="emp_detail_'+tEmpPartResults.item(i).telcell+'" href="#" data-transition="slide"><img src="'+gvUrl+"GetEmpPic2.jsp?empno="+tEmpPartResults.item(i).empno+'" height="70" align="left"><h2>'+tEmpPartResults.item(i).name+' <span class="emp_posname">'+tEmpPartResults.item(i).jwname+'</span></h2><p>'+tEmpPartResults.item(i).dpname+' '+tEmpPartResults.item(i).tmname+'</p></a><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
+		tLi = '<li><a data-phone="'+tEmpPartResults.item(i).telcell+'" href="#" data-transition="slide"><img src="'+gvUrl+"GetEmpPic2.jsp?empno="+tEmpPartResults.item(i).empno+'" height="70" align="left"><h2>'+tEmpPartResults.item(i).name+' <span class="emp_posname">'+tEmpPartResults.item(i).jwname+'</span></h2><p>'+tEmpPartResults.item(i).dpname+' '+tEmpPartResults.item(i).tmname+'</p></a><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
 
 		//노사진버전
 		//tLi = '<li><a href="#"><h2>'+gEmpLists[tEmpPartResults.item(i).id].CB+' <span class="emp_posname">'+gEmpLists[tEmpPartResults.item(i).id].CI+'</span></h2><p>'+gEmpLists[tEmpPartResults.item(i).id].CE+'</p></a><a id="emp_detail_'+tEmpPartResults.item(i).id+'" href="#page_emp_detail" data-transition="slide"></a></li>';
@@ -620,16 +620,21 @@ uf_chkregnumber = function() {
 	}
 }
 
-function uf_sendsms(aPage) {
+uf_sendsms = function(aPage) {
 	// sms 창 열기
 	var tPhone = [];
+	var i = 0;
 	$("#"+aPage+" ul#emp_list li a.ui-link-inherit").each(function() {
-		if($(this).hasClass("bg_checkbox")) {
-			tPhone[] = $(this).attr("data-phone");
+		if( $(this).hasClass("bg_checkbox") ) {
+			//alert($(this).attr("data-phone"))
+			tPhone[i] = $(this).attr("data-phone");
+			i++;
 		}
 	});
 
+alert("sms:"+tPhone.join(';'));
 	location.href = "sms:"+tPhone.join(';');
+	
 }
 
 uf_sendSmsAll = function() {
