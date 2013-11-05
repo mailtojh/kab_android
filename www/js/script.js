@@ -43,10 +43,10 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-//var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
-var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
-var gvSmsSplit = ",";
-//var gvSmsSplit = ";";
+var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
+//var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
+//var gvSmsSplit = ",";
+var gvSmsSplit = ";";
 
 // jqm을 시작합니다. - phonegap load 후에 jqm 시작
 uf_jq_initialize = function() {
