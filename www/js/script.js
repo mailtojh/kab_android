@@ -43,8 +43,8 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-//var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
-var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
+var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
+//var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
 //var gvSmsSplit = ",";
 var gvSmsSplit = ";";
 
@@ -326,13 +326,15 @@ uf_saveDBEmpList = function() {
 			tTmname = gEmpLists[i].TMNAME;
 			tJwcode = gEmpLists[i].JWCODE;
 			tJwname = gEmpLists[i].JWNAME;
+			tFaxcomp = gEmpLists[i].O_FAXNO;
 			// tLi = '<li><a href="#"><img src="'+gEmpLists[i].photo+'" height="70" align="left"><h2>'+gEmpLists[i].name+' <span class="emp_posname">'+gEmpLists[i].posname+'</span></h2><p>'+gEmpLists[i].deptname+'</p></a><a id="emp_detail_'+i+'" href="#"></a></li>';
 
 			//tLi = '<li><a href="#"><img src="'+gEmpLists[i].photo+'" height="70" align="left"><h2>'+gEmpLists[i].name+' <span class="emp_posname">'+gEmpLists[i].posname+'</span></h2><p>'+gEmpLists[i].deptname+'<br />'+gEmpLists[i].telcomp+' / '+gEmpLists[i].telcell+'<br />'+gEmpLists[i].email+'</p></a><a id="emp_detail_'+i+'" href="#"></a></li>';
 			//tLi = '<li><a href="#"><h2>'+(i>2?"장길산":"홍길동")+' <span class="emp_posname">과장</span></h2></a><a href="dept.html"></a></li>';
 		
 			// emp_list.append( tLi );
-			tx.executeSql('INSERT INTO MEMBER (id, name, empno, telcomp, telcell, zonecode, zonecodenm, dpcode, dpname, tmcode, tmname, jwcode, jwname) VALUES ('+tId+', "'+tName+'", "'+tEmpno+'", "'+tTelcomp+'", "'+tTelcell+'", "'+tZonecode+'", "'+tZonecodenm+'", "'+tDpcode+'", "'+tDpname+'", "'+tTmcode+'", "'+tTmname+'", "'+tJwcode+'", "'+tJwname+'") ');
+			// tx.executeSql('INSERT INTO MEMBER (id, name, empno, telcomp, telcell, zonecode, zonecodenm, dpcode, dpname, tmcode, tmname, jwcode, jwname) VALUES ('+tId+', "'+tName+'", "'+tEmpno+'", "'+tTelcomp+'", "'+tTelcell+'", "'+tZonecode+'", "'+tZonecodenm+'", "'+tDpcode+'", "'+tDpname+'", "'+tTmcode+'", "'+tTmname+'", "'+tJwcode+'", "'+tJwname+'") ');
+			tx.executeSql('INSERT INTO MEMBER (id, name, empno, telcomp, telcell, zonecode, zonecodenm, dpcode, dpname, tmcode, tmname, jwcode, jwname, faxcomp) VALUES ('+tId+', "'+tName+'", "'+tEmpno+'", "'+tTelcomp+'", "'+tTelcell+'", "'+tZonecode+'", "'+tZonecodenm+'", "'+tDpcode+'", "'+tDpname+'", "'+tTmcode+'", "'+tTmname+'", "'+tJwcode+'", "'+tJwname+'", "'+tFaxcomp+'") ');
 		}
 	}, errorCB, successCB);
 
@@ -365,6 +367,7 @@ uf_setEmpInfo = function() {
 	$("#emp_info_telcomp span.ui-btn-inner").html("회사 : "+gEmpLists[gCurrentEmp].O_TELNO); //gEmpLists[gCurrentEmp].telcomp);
 	$("#emp_info_telcell a").attr("href", "tel:"+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
 	$("#emp_info_telcell span.ui-btn-inner").html("휴대폰 : "+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
+	$("#emp_info_fax span.ui-btn-inner").html("FAX : "+gEmpLists[gCurrentEmp].O_FAXNO);
 	//$("#emp_info_smscell a").attr("href", "sms:"+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
 	//$("#emp_info_smscell span.ui-btn-inner").html("문자 : "+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
 	$("#emp_info_email a").attr("href", "mailto:"+gEmpLists[gCurrentEmp].EMAIL); //gEmpLists[gCurrentEmp].email);
@@ -493,7 +496,7 @@ uf_setJikwiList = function(aDatas) {
 // DB 생성
 function populateDB(tx) {
 	tx.executeSql('DROP TABLE IF EXISTS MEMBER');
-	tx.executeSql('CREATE TABLE IF NOT EXISTS MEMBER (id, empno, name, posname, deptname, telcomp, telcell, email, zonecode, zonecodenm, dpcode, dpname, tmcode, tmname, jwcode, jwname)');
+	tx.executeSql('CREATE TABLE IF NOT EXISTS MEMBER (id, empno, name, posname, deptname, telcomp, telcell, email, faxcomp, zonecode, zonecodenm, dpcode, dpname, tmcode, tmname, jwcode, jwname)');
 }
 
 function errorCB(err) {
