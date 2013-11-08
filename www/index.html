@@ -142,17 +142,20 @@
 <!-- page: #page_emp 직원조회 -->
 <div data-role="page" id="page_emp">
 	
-	<div data-role="header" data-theme="b" data-fullscreen="false">
+	<div data-role="header" data-position="fixed" data-theme="b" data-fullscreen="false">
 		<h1>직원조회</h1>
 		<a href="#" data-rel="popup" data-position-to="window" data-icon="arrow-r" class="ui-btn-right" onclick="uf_sendsms('')">SMS</a>
+
+		<div class="header_search ui-shadow-inset ui-bar-c">
+			<div class="search_left">
+				<input type="search" data-inline="true" data-mini="true" name="emp_search" id="emp_search" value="" placeholder="이름, 부서, 전화번호 검색..." data-inline="true" >
+			</div>
+			<div class="search_right"><a href="#" id="btn_search" data-role="button" data-inline="true" >검색</a></div>
+		</div>
 	</div>
 	
 	
 	<div data-role="content" id="div_emp_content" >
-		<div class="search_left">
-			<input type="search" name="emp_search" id="emp_search" value="" placeholder="이름, 부서, 전화번호 검색..." data-inline="true" >
-		</div>
-		<div class="search_right"><a href="#" id="btn_search" data-role="button" data-inline="true" >검색</a></div>
 
 		<!-- insert dividers : data-autodividers="true"  -->
 		<ul id="emp_list" data-role="listview" data-theme="c" data-filter="false" data-filter-placeholder="이름, 부서, 전화번호 검색...">
@@ -193,7 +196,7 @@
 
 <!-- page: #page_emp_detail -->
 <div data-role="page" id="page_emp_detail">
-	<div data-role="header" data-theme="b" data-fullscreen="false">
+	<div data-role="header" data-position="fixed" data-theme="b" data-fullscreen="false">
 		<a href="#" data-rel="back" class="ui-icon-nodisc" data-iconshadow="false" data-role="button" data-icon="arrow-l" data-iconpos="left" data-theme="b" data-inline="true" data-transition="slide" data-direction="reverse">뒤로</a>
 		<h1>직원 정보</h1>
 	</div>
@@ -222,7 +225,7 @@
 <!-- page: #page_dept 부서별 -->
 <div data-role="page" id="page_dept">
 	
-	<div data-role="header" data-theme="b" data-fullscreen="false">
+	<div data-role="header" data-position="fixed" data-theme="b" data-fullscreen="false">
 		<h1>부서별</h1>
 	</div>
 
@@ -267,7 +270,7 @@
 <!-- page: #page_position 직위별 -->
 <div data-role="page" id="page_position">
 	
-	<div data-role="header" data-theme="b" data-fullscreen="false">
+	<div data-role="header" data-position="fixed" data-theme="b" data-fullscreen="false">
 		<h1>직위별</h1>
 	</div>
 
@@ -309,19 +312,31 @@
 <!-- page: #page_emp_part 세부 목록 -->
 <div data-role="page" id="page_emp_part">
 
-	<div data-role="header" data-theme="b" data-fullscreen="false">
+	<div data-role="header" data-position="fixed" data-theme="b" data-fullscreen="false">
 		<a href="#" data-rel="back" class="ui-icon-nodisc" data-iconshadow="false" data-role="button" data-icon="arrow-l" data-iconpos="left" data-theme="b" data-inline="true">뒤로</a>
 		<h1>직원목록</h1>
 		<a href="#" data-rel="popup" data-position-to="window" data-icon="arrow-r" class="ui-btn-right" onclick="uf_sendsms('_part')">SMS</a>
 	</div>
 	
 	
-	<div data-role="content" >
+	<div id="list_jikwi" data-role="content" >
 		<!-- insert dividers : data-autodividers="true"  -->
 		<ul id="emp_list_part" data-role="listview" data-theme="c" >
 
 		</ul>
 	</div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div data-role="navbar" data-iconpos="top" data-theme="b">
+			<ul>
+		    <li><a href="#page_emp" data-icon="search" data-transition="slide" data-theme="a">직원조회</a></li>
+		    <li><a href="#page_dept" data-icon="bars" data-transition="slide" data-theme="a">부서별</a></li>
+		    <li><a href="#page_position" data-icon="star" data-transition="slide" data-theme="a">직위별</a></li>
+<!--		    <li><a href="#page_sms" data-icon="info" data-transition="slide" data-theme="a">경조사</a></li>-->
+		    <li><a href="market://details?id=com.ezwel.ezmobile" data-icon="home" data-position-to="window" data-transition="pop" data-rel="popup" data-theme="a" data-position-to="window" >모바일복지관</a></li>
+			</ul>
+		</div>
+	</div>
 
 </div><!-- /page_emp_part -->
 
@@ -331,7 +346,7 @@
 
 <!-- page: #page_sms -->
 <div data-role="page" id="page_sms" data-theme="a">
-	<div data-role="header" data-theme="b" data-fullscreen="false">
+	<div data-role="header" data-position="fixed" data-theme="b" data-fullscreen="false">
 		<h1>경조사 전직원 문자보내기</h1>
 	</div>
 	
@@ -391,10 +406,7 @@
 	</div>
 </div>
 
-
-
-
-<iframe id="checkframe" name="checkframe" src="about:blank" width="1" height="1"></iframe>
+<!--<iframe id="checkframe" name="checkframe" src="about:blank" width="1" height="1"></iframe>-->
 
 
 </body>

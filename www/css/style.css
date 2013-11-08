@@ -5,7 +5,7 @@
 #page_emp .ui-li-thumb, .ui-listview .ui-li-icon, .ui-li-content {margin:5px 0 5px 40px;}
 #page_emp .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb { padding-left:120px; }
 
-#page_emp ul#emp_list {margin-top:-12px;}
+#page_emp ul#emp_list {margin-top:-16px;}
 
 #page_emp ul#emp_list .ui-link-inherit { background:url(./images/icon_checkbox_off.png) no-repeat 10px; padding-left:120px; }
 #page_emp ul#emp_list .ui-link-inherit.bg_checkbox { background:url(./images/icon_checkbox_on.png) no-repeat 10px; }
@@ -25,8 +25,12 @@
 
 #div_emp_content {position:relative;}
 #div_emp_content .ui-input-search {margin-top:-7px;}
-#div_emp_content .search_left {padding-right:80px;height:60px;}
-#div_emp_content .search_right {position:absolute;top:-2px;right:10px;}
+
+
+
+.header_search { position:relative; padding:5px 10px; margin-bottom:-1px; }
+.header_search .search_left {padding-right:60px;}
+.header_search .search_right {position:absolute;top:0px;right:6px;}
 
 
 
@@ -41,6 +45,8 @@
 .login_form , .login_form_2 {margin-top:90px;}
 .login_form_2 {display:none;}
 
+#list_jikwi { margin-top:43px; }
+#list_jikwi form { position: fixed; top: 58px; left: 15px; width: 100%; z-index: 100; }
 
 #page_dept .ui-content, #page_dept .ui-collapsible-content { padding:0 15px; }
 #page_dept .ui-collapsible-content>.ui-listview { margin: 0 -15px; }
