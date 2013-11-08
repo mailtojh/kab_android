@@ -43,8 +43,8 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
-//var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
+//var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
+var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
 //var gvSmsSplit = ",";
 var gvSmsSplit = ";";
 
