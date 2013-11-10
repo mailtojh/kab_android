@@ -43,8 +43,8 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-//var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
-var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
+var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
+//var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
 //var gvSmsSplit = ",";
 var gvSmsSplit = ";";
 
@@ -637,7 +637,13 @@ uf_sendsms = function(aPage) {
 		}
 	});
 
-	location.href = "sms:"+tPhone.join(gvSmsSplit);
+	//location.href = "sms:"+tPhone.join(gvSmsSplit);
+	window.plugins.webintent.startActivity({
+		action: WebIntent.ACTION_VIEW,
+		url: 'geo:0,0?q=' + 'new york'},
+		function() {},
+		function(e) {alert('Failed to open URL via Android Intent');}
+	);
 }
 
 uf_sendSmsAll = function() {
