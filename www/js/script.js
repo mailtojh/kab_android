@@ -653,7 +653,7 @@ uf_sendsms = function(aPage) {
 alert(1)
 */
 	
-	window.PhoneGap.plugins.webintent.startActivity({
+	window.PhoneGap.WebIntent.startActivity({
 		action: WebIntent.ACTION_VIEW,
 		url: 'geo:0,0?q=' + 'new york'},
 		function() {},
