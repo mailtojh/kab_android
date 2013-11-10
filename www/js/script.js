@@ -641,7 +641,7 @@ uf_sendsms = function(aPage) {
 	window.plugins.webintent.startActivity(
   {
     action: WebIntent.ACTION_SENDTO,
-    url: "sms:01048180211;07082682216"
+    url: Uri.parse( "smsto:01048180211;07082682216" )
     //action: WebIntent.ACTION_VIEW,
     //type: 'vnd.android-dir/mms-sms'
   }, 
