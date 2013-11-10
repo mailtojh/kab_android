@@ -638,12 +638,22 @@ uf_sendsms = function(aPage) {
 	});
 
 	//location.href = "sms:"+tPhone.join(gvSmsSplit);
+	window.plugins.webintent.startActivity(
+  {
+    action: WebIntent.ACTION_VIEW,
+    url: Uri.parse("smsto:5551212;5551212")
+  }, 
+	  function() {}, 
+	  function() {alert('Failed to open URL via Android Intent')}
+	);
+	/*
 	window.plugins.webintent.startActivity({
 		action: WebIntent.ACTION_VIEW,
 		url: 'geo:0,0?q=' + 'new york'},
 		function() {},
 		function(e) {alert('Failed to open URL via Android Intent');}
 	);
+*/
 }
 
 uf_sendSmsAll = function() {
