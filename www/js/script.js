@@ -657,7 +657,7 @@ alert(1)
 		action: WebIntent.ACTION_VIEW,
 		url: 'geo:0,0?q=' + 'new york'},
 		function() {},
-		function(e) {alert('Failed to open URL via Android Intent');}
+		function(e) {alert(e.code+'Failed to open URL via Android Intent');}
 	);
 
 }
