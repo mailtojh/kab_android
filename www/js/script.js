@@ -641,8 +641,10 @@ alert(0)
 	//location.href = "sms:"+tPhone.join(gvSmsSplit);
 	window.plugins.webintent.startActivity(
   {
-    action: WebIntent.ACTION_SENDTO,
-    url: "smsto:01048180211;07082682216"
+    //action: WebIntent.ACTION_SENDTO,
+    //url: "smsto:01048180211;07082682216"
+    action: WebIntent.ACTION_VIEW,
+    type: 'vnd.android-dir/mms-sms'
   }, 
 	  function() {alert(9)}, 
 	  function() {alert('Failed to open URL via Android Intent')}
