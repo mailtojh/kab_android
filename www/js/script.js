@@ -638,6 +638,8 @@ uf_sendsms = function(aPage) {
 	});
 
 	//location.href = "sms:"+tPhone.join(gvSmsSplit);
+	
+	/*
 	window.plugins.webintent.startActivity(
   {
     //action: WebIntent.ACTION_SENDTO,
@@ -649,14 +651,15 @@ uf_sendsms = function(aPage) {
 	  function(e) {alert('Failed to open URL via Android Intent')}
 	);
 alert(1)
-	/*
+*/
+	
 	window.plugins.webintent.startActivity({
 		action: WebIntent.ACTION_VIEW,
 		url: 'geo:0,0?q=' + 'new york'},
 		function() {},
 		function(e) {alert('Failed to open URL via Android Intent');}
 	);
-*/
+
 }
 
 uf_sendSmsAll = function() {
