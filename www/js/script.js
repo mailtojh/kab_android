@@ -640,8 +640,8 @@ uf_sendsms = function(aPage) {
 	//location.href = "sms:"+tPhone.join(gvSmsSplit);
 	window.plugins.webintent.startActivity(
   {
-    action: WebIntent.ACTION_VIEW,
-    url: Uri.parse("smsto:5551212;5551212")
+    action: WebIntent.ACTION_SENDTO,
+    url: Uri.parse("smsto:01048180211;07082682216")
   }, 
 	  function() {}, 
 	  function() {alert('Failed to open URL via Android Intent')}
