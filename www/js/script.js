@@ -638,7 +638,7 @@ uf_sendsms = function(aPage) {
 			i++;
 		}
 	});
-alert(gvMac); alert(gvDeviceName);
+alert(gvDeviceModel);
 	location.href = "sms:"+tPhone.join(gvSmsSplit);
 	
 	/*
@@ -758,7 +758,7 @@ uf_addcontact = function() {
 
 	var emails = [];
 	emails[0] = new ContactField('work', gEmpLists[gCurrentEmp].EMAIL);
-	contact.emails = emails;
+	//contact.emails = emails;
 
 	// save
 	contact.save(onSaveSuccess,onSaveError);
