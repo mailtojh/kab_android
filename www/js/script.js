@@ -123,6 +123,13 @@ uf_initialize_data = function () {
 			uf_searchEmp( $( "#emp_search" ).val() );
 		});
 
+		$("#emp_search").on("keypress", function(event){               
+	    if (event.keyCode === 13) {
+	        alert("The enter key was pressed");
+	        event.preventDefault();
+	    }
+		});
+
   	$( "ul#emp_list" ).listview( "refresh" );
   	uf_setCheckboxEvent();
 
@@ -637,11 +644,11 @@ uf_sendsms = function(aPage) {
 		}
 	});
 
-	tSmsSplit = ",";
+	tSmsSplit = "?";
 	// gvDeviceModel
-	if(gvDeviceModel.substr(0,2)=="LG") {
-		tSmsSplit = ";";
-	}
+	if(gvDeviceModel.substr(0,2)=="LG") tSmsSplit = ";";
+	if(gvDeviceModel.substr(0,3)=="SHV") tSmsSplit = "?";
+	
 	location.href = "sms:"+tPhone.join(tSmsSplit);
 	
 	/*
@@ -753,13 +760,13 @@ uf_addcontact = function() {
 	contact.displayName = gEmpLists[gCurrentEmp].HNAME + " " + gEmpLists[gCurrentEmp].JWNAME;
 	contact.nickname = gEmpLists[gCurrentEmp].HNAME + " " + gEmpLists[gCurrentEmp].JWNAME;       //specify both to support all devices
 
-	var phoneNumbers = [];
+	var phoneNumbers = [2];
 	phoneNumbers[0] = new ContactField('mobile', gEmpLists[gCurrentEmp].HANDNO);
 	phoneNumbers[1] = new ContactField('work', gEmpLists[gCurrentEmp].O_TELNO);
 	//phoneNumbers[2] = new ContactField('fax', gEmpLists[gCurrentEmp].O_FAXNO);
 	contact.phoneNumbers = phoneNumbers;
 
-	var emails = [];
+	var emails = [1];
 	emails[0] = new ContactField('work', gEmpLists[gCurrentEmp].EMAIL);
 	contact.emails = emails;
 
