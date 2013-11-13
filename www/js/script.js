@@ -53,6 +53,8 @@ uf_jq_initialize = function() {
 	gvHandno = window.localStorage.getItem("handno");
 	gvEmpno =  window.localStorage.getItem("empno");
 
+	$.mobile.defaultPageTransition = "slide";
+
 	if(gvHandno&&gvEmpno&&gvMac) {
 		uf_showLoading("show");
 		// 인증여부 체크
