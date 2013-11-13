@@ -59,4 +59,6 @@
 
 #sms_all_msa {min-height:120px;}
 
-
+.ui-page {
+    -webkit-backface-visibility: hidden;
+}
