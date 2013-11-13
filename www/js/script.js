@@ -124,10 +124,7 @@ uf_initialize_data = function () {
 		});
 
 		$("#emp_search").on("keypress", function(event){               
-	    if (event.keyCode === 13) {
-	        alert("The enter key was pressed");
-	        event.preventDefault();
-	    }
+	    uf_searchEmp( $( "#emp_search" ).val() );
 		});
 
   	$( "ul#emp_list" ).listview( "refresh" );
@@ -266,8 +263,9 @@ uf_getPositionList = function() {
 uf_searchEmp = function(aVal) {
 	uf_showLoading("show");
 	db.transaction(function(tx) {
-		tx.executeSql('select * from MEMBER where name like "%'+aVal+'%" and dpcode <> "9999"', [], uf_setSearchResult, errorCB);
+		tx.executeSql('select * from MEMBER where (name like "%'+aVal+'%" or dpname like "%'+aVal+'%" or zonecodenm like "%'+aVal+'%" or tmname like "%'+aVal+'%" or telcell like "%'+aVal+'%") and dpcode <> "9999"', [], uf_setSearchResult, errorCB);
 		//alert('select * from MEMBER where name like "%'+aVal+'%" ');
+		// zonecodenm, dpcode, dpname, tmcode, tmname, jwcode, jwname
 		//tx.executeSql('select * from MEMBER ', [], uf_setSearchResult, errorCB);
 		gEmpCurPage = 0;
 	}, errorCB);
@@ -760,15 +758,15 @@ uf_addcontact = function() {
 	contact.displayName = gEmpLists[gCurrentEmp].HNAME + " " + gEmpLists[gCurrentEmp].JWNAME;
 	contact.nickname = gEmpLists[gCurrentEmp].HNAME + " " + gEmpLists[gCurrentEmp].JWNAME;       //specify both to support all devices
 
-	var phoneNumbers = [2];
+	var phoneNumbers = [];
 	phoneNumbers[0] = new ContactField('mobile', gEmpLists[gCurrentEmp].HANDNO);
-	phoneNumbers[1] = new ContactField('work', gEmpLists[gCurrentEmp].O_TELNO);
+	//phoneNumbers[1] = new ContactField('work', gEmpLists[gCurrentEmp].O_TELNO);
 	//phoneNumbers[2] = new ContactField('fax', gEmpLists[gCurrentEmp].O_FAXNO);
 	contact.phoneNumbers = phoneNumbers;
 
 	var emails = [1];
 	emails[0] = new ContactField('work', gEmpLists[gCurrentEmp].EMAIL);
-	contact.emails = emails;
+	//contact.emails = emails;
 
 	// save
 	contact.save(onSaveSuccess,onSaveError);
