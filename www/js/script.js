@@ -638,7 +638,7 @@ uf_sendsms = function(aPage) {
 			i++;
 		}
 	});
-alert(gvDeviceName);
+alert(gvMac); alert(gvDeviceName);
 	location.href = "sms:"+tPhone.join(gvSmsSplit);
 	
 	/*
@@ -752,12 +752,12 @@ uf_addcontact = function() {
 
 	var phoneNumbers = [];
 	phoneNumbers[0] = new ContactField('mobile', gEmpLists[gCurrentEmp].HANDNO);
-	phoneNumbers[0] = new ContactField('office', gEmpLists[gCurrentEmp].O_TELNO);
-	phoneNumbers[0] = new ContactField('fax', gEmpLists[gCurrentEmp].O_FAXNO);
+	phoneNumbers[1] = new ContactField('office', gEmpLists[gCurrentEmp].O_TELNO);
+	phoneNumbers[2] = new ContactField('fax', gEmpLists[gCurrentEmp].O_FAXNO);
 	contact.phoneNumbers = phoneNumbers;
 
 	var emails = [];
-	emails[0] = new ContactField('work', gEmpLists[gCurrentEmp].EMAIL, true);
+	emails[0] = new ContactField('work', gEmpLists[gCurrentEmp].EMAIL);
 	contact.emails = emails;
 
 	// save
