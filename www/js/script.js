@@ -45,14 +45,12 @@ var tId;
 
 var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
 //var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
-//var gvSmsSplit = ",";
-var gvSmsSplit = ";";
 
 // jqm을 시작합니다. - phonegap load 후에 jqm 시작
 uf_jq_initialize = function() {
 	gvHandno = window.localStorage.getItem("handno");
 	gvEmpno =  window.localStorage.getItem("empno");
-alert(gvDeviceModel)
+
 	$.mobile.defaultPageTransition = "slide";
 
 	if(gvHandno&&gvEmpno&&gvMac) {
@@ -638,8 +636,13 @@ uf_sendsms = function(aPage) {
 			i++;
 		}
 	});
-alert(gvDeviceModel);
-	location.href = "sms:"+tPhone.join(gvSmsSplit);
+
+	tSmsSplit = ",";
+	// gvDeviceModel
+	if(gvDeviceModel.substr(0,2)=="LG") {
+		tSmsSplit = ";";
+	}
+	location.href = "sms:"+tPhone.join(tSmsSplit);
 	
 	/*
 	window.plugins.webintent.startActivity(
@@ -752,13 +755,13 @@ uf_addcontact = function() {
 
 	var phoneNumbers = [];
 	phoneNumbers[0] = new ContactField('mobile', gEmpLists[gCurrentEmp].HANDNO);
-	phoneNumbers[1] = new ContactField('office', gEmpLists[gCurrentEmp].O_TELNO);
-	phoneNumbers[2] = new ContactField('fax', gEmpLists[gCurrentEmp].O_FAXNO);
+	phoneNumbers[1] = new ContactField('work', gEmpLists[gCurrentEmp].O_TELNO);
+	//phoneNumbers[2] = new ContactField('fax', gEmpLists[gCurrentEmp].O_FAXNO);
 	contact.phoneNumbers = phoneNumbers;
 
 	var emails = [];
 	emails[0] = new ContactField('work', gEmpLists[gCurrentEmp].EMAIL);
-	//contact.emails = emails;
+	contact.emails = emails;
 
 	// save
 	contact.save(onSaveSuccess,onSaveError);
