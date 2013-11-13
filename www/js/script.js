@@ -52,7 +52,7 @@ var gvSmsSplit = ";";
 uf_jq_initialize = function() {
 	gvHandno = window.localStorage.getItem("handno");
 	gvEmpno =  window.localStorage.getItem("empno");
-
+alert(gvDeviceModel)
 	$.mobile.defaultPageTransition = "slide";
 
 	if(gvHandno&&gvEmpno&&gvMac) {
