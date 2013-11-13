@@ -17,6 +17,7 @@
 	var gvHandno = ""; // handno
 	var gvEmpno = ""; // empno
 	var gvCertno = ""; // 인증번호
+	var gvDeviceName = ""; // 기기명
 
 	$(document).bind("mobileinit", function () {
 	  $.support.cors = true;
@@ -27,6 +28,7 @@
 
 	function deviceReady() {
 		gvMac = device.uuid;
+		gvDeviceName = device.name;
 
 		uf_jq_initialize();
 	}

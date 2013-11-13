@@ -87,7 +87,7 @@ uf_initialize_data = function () {
 	//alert('get data')
 	//gvEmpno = "90001";
 	//gvMac = "d5aa0e0b9287122c";
-	//gvHandno = "01037062216";
+	//gvHandno = "01012345678";
 
 
 	uf_showLoading("show");
@@ -638,14 +638,14 @@ uf_sendsms = function(aPage) {
 			i++;
 		}
 	});
-
+alert(gvDeviceName);
 	location.href = "sms:"+tPhone.join(gvSmsSplit);
 	
 	/*
 	window.plugins.webintent.startActivity(
   {
     //action: WebIntent.ACTION_SENDTO,
-    //url: "smsto:01048180211;07082682216"
+    //url: "smsto:01012345678;07012345678"
     action: WebIntent.ACTION_VIEW,
     type: 'vnd.android-dir/mms-sms'
   }, 
@@ -747,32 +747,22 @@ uf_addcontact = function() {
 
 	var contact = navigator.contacts.create();
 
-	contact.displayName = gEmpLists[gCurrentEmp].HNAME;
-	contact.nickname = gEmpLists[gCurrentEmp].HNAME;       //specify both to support all devices
-	//contact.phoneNumbers = "010-3706-2215";
+	contact.displayName = gEmpLists[gCurrentEmp].HNAME + " " + gEmpLists[gCurrentEmp].JWNAME;
+	contact.nickname = gEmpLists[gCurrentEmp].HNAME + " " + gEmpLists[gCurrentEmp].JWNAME;       //specify both to support all devices
 
 	var phoneNumbers = [];
 	phoneNumbers[0] = new ContactField('mobile', gEmpLists[gCurrentEmp].HANDNO);
+	phoneNumbers[0] = new ContactField('office', gEmpLists[gCurrentEmp].O_TELNO);
+	phoneNumbers[0] = new ContactField('fax', gEmpLists[gCurrentEmp].O_FAXNO);
 	contact.phoneNumbers = phoneNumbers;
-//alert(contact.displayName+gEmpLists[gCurrentEmp].HANDNO)
+
+	var emails = [];
+	emails[0] = new ContactField('work', gEmpLists[gCurrentEmp].EMAIL, true);
+	contact.emails = emails;
+
 	// save
 	contact.save(onSaveSuccess,onSaveError);
 
-/*
-	$("#emp_info_photo").attr("src", gvUrl + "GetEmpPic.jsp?empno="+gEmpLists[gCurrentEmp].EMPNO);
-	$("#emp_info_deptname").html(gEmpLists[gCurrentEmp].DPNAME+" "+gEmpLists[gCurrentEmp].TMNAME);//gEmpLists[gCurrentEmp].deptname);
-	$("#emp_info_name").html(gEmpLists[gCurrentEmp].HNAME); //gEmpLists[gCurrentEmp].name);
-	$("#emp_info_posname").html(gEmpLists[gCurrentEmp].JWNAME); //gEmpLists[gCurrentEmp].posname);
-	$("#emp_info_telcomp a").attr("href", "tel:"+gEmpLists[gCurrentEmp].O_TELNO); //gEmpLists[gCurrentEmp].telcomp);
-	$("#emp_info_telcomp span.ui-btn-inner").html("회사 : "+gEmpLists[gCurrentEmp].O_TELNO); //gEmpLists[gCurrentEmp].telcomp);
-	$("#emp_info_telcell a").attr("href", "tel:"+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
-	$("#emp_info_telcell span.ui-btn-inner").html("휴대폰 : "+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
-	//$("#emp_info_smscell a").attr("href", "sms:"+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
-	//$("#emp_info_smscell span.ui-btn-inner").html("문자 : "+gEmpLists[gCurrentEmp].HANDNO); //gEmpLists[gCurrentEmp].telcell);
-	$("#emp_info_email a").attr("href", "mailto:"+gEmpLists[gCurrentEmp].EMAIL); //gEmpLists[gCurrentEmp].email);
-	$("#emp_info_email span.ui-btn-inner").html("이메일 : "+gEmpLists[gCurrentEmp].EMAIL);
-
-*/
 }
 
 function onSaveSuccess() {
