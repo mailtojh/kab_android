@@ -43,8 +43,8 @@ var tTelcomp;
 var tTelcell;
 var tId;
 
-var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
-//var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
+//var gvUrl = "http://kabmobile.mighty-x.com:8080/Mighty/mobile/";
+var gvUrl = "http://www.kab.co.kr/kab/home/mobile/";
 
 // jqm을 시작합니다. - phonegap load 후에 jqm 시작
 uf_jq_initialize = function() {
@@ -767,7 +767,7 @@ uf_addcontact = function() {
 	var emails = [1];
 	emails[0] = new ContactField('work', gEmpLists[gCurrentEmp].EMAIL);
 	contact.emails = emails;
-	
+
 
 	// save
 	contact.save(onSaveSuccess,onSaveError);
