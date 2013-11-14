@@ -12,10 +12,10 @@
 
 /* #page_emp h2.ui-li-heading {margin:0 0 7px 0;} */
 
-#page_emp_detail .emp_detail_photo {margin:0 auto;}
+#page_emp_detail .emp_detail_photo {float:left;}
 #page_emp_detail .emp_detail_photo img {max-width:150px;}
-#page_emp_detail .emp_detail_info {padding-left:10px;padding-top:10px;font-weight:bold;} /* 사진 padding-left:120px; */
-#page_emp_detail ul.emp_detail_btn {list-style:none;margin:10px 0 0 0;padding:0;clear:both;}
+#page_emp_detail .emp_detail_info {padding-left:10px;padding-top:10px;font-weight:bold;float:left;} /* 사진 padding-left:120px; */
+#page_emp_detail ul.emp_detail_btn {list-style:none;margin:10px 0 0 0;padding:10px 0 0 0;clear:both;}
 #page_emp_detail ul.emp_detail_btn li {font-size:16px;margin:10px 0 10px 0;}
 #page_emp_detail #emp_info_posname {font-size:14px;color:#666;}
 #page_emp_detail #emp_info_name {font-size:24px;margin:8px 0 15px 0;}

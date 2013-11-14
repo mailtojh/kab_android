@@ -263,7 +263,7 @@ uf_getPositionList = function() {
 uf_searchEmp = function(aVal) {
 	uf_showLoading("show");
 	db.transaction(function(tx) {
-		tx.executeSql('select * from MEMBER where (name like "%'+aVal+'%" or dpname like "%'+aVal+'%" or zonecodenm like "%'+aVal+'%" or tmname like "%'+aVal+'%" or telcell like "%'+aVal+'%") and dpcode <> "9999"', [], uf_setSearchResult, errorCB);
+		tx.executeSql('select * from MEMBER where (name like "%'+aVal+'%" or dpname like "%'+aVal+'%" or tmname like "%'+aVal+'%" or telcell like "%'+aVal+'%") and dpcode <> "9999"', [], uf_setSearchResult, errorCB);
 		//alert('select * from MEMBER where name like "%'+aVal+'%" ');
 		// zonecodenm, dpcode, dpname, tmcode, tmname, jwcode, jwname
 		//tx.executeSql('select * from MEMBER ', [], uf_setSearchResult, errorCB);
@@ -365,7 +365,7 @@ uf_setCheckboxEvent = function() {
 // 직원 세부정보 넣기
 uf_setEmpInfo = function() { 
 	$("#emp_info_photo").attr("src", gvUrl + "GetEmpPic.jsp?empno="+gEmpLists[gCurrentEmp].EMPNO);
-	$("#emp_info_deptname").html(gEmpLists[gCurrentEmp].DPNAME+" "+gEmpLists[gCurrentEmp].TMNAME);//gEmpLists[gCurrentEmp].deptname);
+	$("#emp_info_deptname").html(gEmpLists[gCurrentEmp].DPNAME+"<br />"+gEmpLists[gCurrentEmp].TMNAME);//gEmpLists[gCurrentEmp].deptname);
 	$("#emp_info_name").html(gEmpLists[gCurrentEmp].HNAME); //gEmpLists[gCurrentEmp].name);
 	$("#emp_info_posname").html(gEmpLists[gCurrentEmp].JWNAME); //gEmpLists[gCurrentEmp].posname);
 	$("#emp_info_telcomp a").attr("href", "tel:"+gEmpLists[gCurrentEmp].O_TELNO); //gEmpLists[gCurrentEmp].telcomp);
@@ -755,18 +755,18 @@ uf_addcontact = function() {
 
 	var contact = navigator.contacts.create();
 
-	contact.displayName = gEmpLists[gCurrentEmp].HNAME + " " + gEmpLists[gCurrentEmp].JWNAME;
-	contact.nickname = gEmpLists[gCurrentEmp].HNAME + " " + gEmpLists[gCurrentEmp].JWNAME;       //specify both to support all devices
+	contact.displayName = gEmpLists[gCurrentEmp].HNAME ;
+	contact.nickname = gEmpLists[gCurrentEmp].HNAME ;       //specify both to support all devices
 
 	var phoneNumbers = [];
 	phoneNumbers[0] = new ContactField('mobile', gEmpLists[gCurrentEmp].HANDNO);
-	//phoneNumbers[1] = new ContactField('work', gEmpLists[gCurrentEmp].O_TELNO);
-	//phoneNumbers[2] = new ContactField('fax', gEmpLists[gCurrentEmp].O_FAXNO);
+	phoneNumbers[1] = new ContactField('work', gEmpLists[gCurrentEmp].O_TELNO);
+	phoneNumbers[2] = new ContactField('fax', gEmpLists[gCurrentEmp].O_FAXNO);
 	contact.phoneNumbers = phoneNumbers;
 
 	var emails = [1];
 	emails[0] = new ContactField('work', gEmpLists[gCurrentEmp].EMAIL);
-	//contact.emails = emails;
+	contact.emails = emails;
 
 	// save
 	contact.save(onSaveSuccess,onSaveError);
