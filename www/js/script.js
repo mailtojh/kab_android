@@ -760,13 +760,13 @@ uf_addcontact = function() {
 
 	var phoneNumbers = [];
 	phoneNumbers[0] = new ContactField('mobile', gEmpLists[gCurrentEmp].HANDNO);
-	phoneNumbers[1] = new ContactField('work', gEmpLists[gCurrentEmp].O_TELNO);
-	phoneNumbers[2] = new ContactField('fax', gEmpLists[gCurrentEmp].O_FAXNO);
+	//phoneNumbers[1] = new ContactField('work', gEmpLists[gCurrentEmp].O_TELNO);
+	//phoneNumbers[2] = new ContactField('fax', gEmpLists[gCurrentEmp].O_FAXNO);
 	contact.phoneNumbers = phoneNumbers;
 
-	var emails = [1];
-	emails[0] = new ContactField('work', gEmpLists[gCurrentEmp].EMAIL);
-	contact.emails = emails;
+	//var emails = [];
+	//emails[0] = new ContactField('work', gEmpLists[gCurrentEmp].EMAIL);
+	//contact.emails = emails;
 
 	// save
 	contact.save(onSaveSuccess,onSaveError);
