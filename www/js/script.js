@@ -755,18 +755,19 @@ uf_addcontact = function() {
 
 	var contact = navigator.contacts.create();
 
-	contact.displayName = gEmpLists[gCurrentEmp].HNAME ;
-	contact.nickname = gEmpLists[gCurrentEmp].HNAME ;       //specify both to support all devices
+	contact.displayName = gEmpLists[gCurrentEmp].HNAME + " " + gEmpLists[gCurrentEmp].JWNAME ;
+	contact.nickname = gEmpLists[gCurrentEmp].HNAME + " " + gEmpLists[gCurrentEmp].JWNAME ;       //specify both to support all devices
 
 	var phoneNumbers = [];
 	phoneNumbers[0] = new ContactField('mobile', gEmpLists[gCurrentEmp].HANDNO);
-	//phoneNumbers[1] = new ContactField('work', gEmpLists[gCurrentEmp].O_TELNO);
-	//phoneNumbers[2] = new ContactField('fax', gEmpLists[gCurrentEmp].O_FAXNO);
+	phoneNumbers[1] = new ContactField('work', gEmpLists[gCurrentEmp].O_TELNO);
+	phoneNumbers[2] = new ContactField('fax', gEmpLists[gCurrentEmp].O_FAXNO);
 	contact.phoneNumbers = phoneNumbers;
 
-	//var emails = [];
-	//emails[0] = new ContactField('work', gEmpLists[gCurrentEmp].EMAIL);
-	//contact.emails = emails;
+	var emails = [1];
+	emails[0] = new ContactField('work', gEmpLists[gCurrentEmp].EMAIL);
+	contact.emails = emails;
+	
 
 	// save
 	contact.save(onSaveSuccess,onSaveError);
